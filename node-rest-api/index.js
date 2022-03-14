@@ -5,11 +5,11 @@ let express = require('express'),
   bodyParser = require('body-parser'),
   mongoDb = require('./database/db');
   createError = require('http-errors');
-mongoose.Promise = global.Promise;
-mongoose.connect(mongoDb.db, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
+  mongoose.Promise = global.Promise;
+  mongoose.connect(mongoDb.db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then(() => {
     console.log('Database sucessfully connected ')
   },
   error => {
