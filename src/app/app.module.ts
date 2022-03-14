@@ -10,13 +10,15 @@ import { BooksListComponent } from './components/books-list/books-list.component
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddBookComponent,
     BookDetailComponent,
-    BooksListComponent
+    BooksListComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,
