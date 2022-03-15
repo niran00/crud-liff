@@ -11,7 +11,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class CrudService {
  
   // Node/Express API
-  REST_API: string = 'https://quizzical-kirch-ace136.netlify/api';
+  REST_API: string = 'http://192.168.1.101:8000/api';
  
   // Http Header
   // httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
