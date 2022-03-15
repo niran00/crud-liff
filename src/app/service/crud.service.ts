@@ -15,7 +15,7 @@ export class CrudService {
  
   // Http Header
   // httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  httpHeaders = new HttpHeaders({ 'Access-Control-Allow-Origin': '*','content-type': 'application/json'}  )
+  httpHeaders = new HttpHeaders({ 'Access-Control-Allow-Origin': '*/*','content-type': 'application/json'}  )
  
   constructor(private httpClient: HttpClient) { }
  
