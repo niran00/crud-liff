@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnInit, NgZone } from '@angular/core';
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
+import { Router } from '@angular/router';
+import { CrudService } from './../../service/crud.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +11,11 @@ import * as liffApi from '@liff/is-api-available';
 })
 export class DashboardComponent implements AfterViewInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private ngZone: NgZone,
+    private crudService: CrudService
+  ) { }
 
 
   @ViewChild('body') body: ElementRef | any  ;
