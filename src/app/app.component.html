@@ -1,16 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">Angular 13 CRUD Operations Demo</a>
- 
-  <div id="navbarNav" class="collapse navbar-collapse">
-    <ul class="navbar-nav ml-auto ">
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/books-list">Show Books</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/add-book">Add Books</a>
-      </li>
-    </ul>
-  </div>
-</nav>
- 
+<div #body id="body">
+  <section #profile class="text-center pt-5" id="profile">
+    <img #picutreUrl class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
+  
+      <div class="container pt-3">
+
+        <p #userId id="userId"></p>
+        <p #displayName id="displayName"></p>
+        <p #statusMessage id="statusMessage"></p>
+        <p #email id="email"></p>
+    
+      </div>
+  
+  </section>
+
+</div>
+
+
 <router-outlet></router-outlet>
