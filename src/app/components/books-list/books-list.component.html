@@ -23,20 +23,22 @@
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Description</th>
+            <th scope="col">Phone Number</th>
+            <!-- <th scope="col">Description</th> -->
             <th class="text-center" scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let book of Books; let i = index">
-            <th scope="row">{{book._id}}</th>
-            <td>{{book.name}}</td>
-            <td>{{book.price}}</td>
-            <td>{{book.description}}</td>
-            <td class="text-center">
-              <button class="btn btn-sm btn-primary" routerLink="/edit-book/{{book._id}}">Edit</button>
-              <button class="btn btn-sm btn-danger" (click)="delete(book._id, i)">Delete</button>
+          <tr *ngFor="let book of Books; let i = index; let last = last; ">
+              <ng-container *ngIf="last">
+                <th scope="row">{{book._id}}</th>
+                <td>{{book.name}}</td>
+                <td>{{book.price}}</td>
+                <!-- <td>{{book.description}}</td> -->
+                <td class="text-center">
+                <button class="btn btn-sm btn-primary" routerLink="/edit-book/{{book._id}}">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="delete(book._id, i)">Delete</button>
+              </ng-container>
           </tr>
         </tbody>
       </table>

@@ -5,6 +5,8 @@ import { BooksListComponent } from './components/books-list/books-list.component
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
+import { OtpComponent } from './components/otp/otp.component';
+
 
 const routes: Routes = [
   {
@@ -13,13 +15,19 @@ const routes: Routes = [
   },  
   { 
     path: 'books-list',
-    component: BooksListComponent },
+    component: BooksListComponent 
+  },
   { 
     path: 'add-book', 
-    component: AddBookComponent },
+    component: AddBookComponent 
+  },
   { 
     path: 'edit-book/:id', 
     component: BookDetailComponent 
+  },
+  { 
+    path: 'otp', 
+    component: OtpComponent 
   },
   {
     path: '**', 
