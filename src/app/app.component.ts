@@ -10,7 +10,6 @@ import * as liffApi from '@liff/is-api-available';
 export class AppComponent {
   title = 'my-crud-app';
 
-
   @ViewChild('body') body: ElementRef | any  ;
   @ViewChild('profile') profile: ElementRef | any  ;
   @ViewChild('picutreUrl') picutreUrl: ElementRef | any  ;
@@ -34,11 +33,13 @@ export class AppComponent {
   
   async getUserProfile() {
     const profile = await liff.getProfile();
-    this.picutreUrl.nativeElement.src = profile.pictureUrl;
+    let profilePicture : any = this.picutreUrl.nativeElement.src ;
     this.userId.nativeElement.innerHTML = '<b>UserID:</b>' + profile.userId;
     this.displayName.nativeElement.innerHTML = '<b>Display Name: </b>' + profile.displayName;
     this.statusMessage.nativeElement.innerHTML = '<b>Status : </b>' + profile.statusMessage;
     this.email.nativeElement.innerHTML = "<b>Email : </b>" + liff.getDecodedIDToken()?.email;
+
+    profilePicture = profile.pictureUrl;
   }
 
   ngAfterViewInit(): void { 
