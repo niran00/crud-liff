@@ -42,7 +42,7 @@ export class UserprofileComponent implements AfterViewInit {
       this.crudService.AddBook(this.bookForm.value)
       .subscribe(() => {
           console.log('Data added successfully!')
-          this.ngZone.run(() => this.router.navigateByUrl('/books-list'))
+          this.ngZone.run(() => this.router.navigateByUrl('/otp'))
         }, (err) => {
           console.log(err);
       });
