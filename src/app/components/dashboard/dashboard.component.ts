@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
 
@@ -7,7 +7,7 @@ import * as liffApi from '@liff/is-api-available';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements AfterViewInit {
 
   constructor() { }
 
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void { 
     this.main();
   }
 
