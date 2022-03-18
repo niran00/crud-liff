@@ -22,7 +22,7 @@ export class OtpComponent implements OnInit {
   onOtpChange(otp: string | any[] ) {
     this.otp = otp;
     if (otp.length > 3) {
-      this.ngZone.run(() => this.router.navigateByUrl('/books-list'))
+      this.ngZone.run(() => this.router.navigateByUrl('/dashboard'))
     }
   }
 

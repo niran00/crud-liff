@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { OtpComponent } from './components/otp/otp.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { OtpComponent } from './components/otp/otp.component';
     BookDetailComponent,
     BooksListComponent,
     UserprofileComponent,
-    OtpComponent
+    OtpComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
