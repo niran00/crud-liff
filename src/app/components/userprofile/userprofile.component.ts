@@ -30,15 +30,23 @@ export class UserprofileComponent implements AfterViewInit {
   }
  
   ngOnInit() { }
+
+  @ViewChild('nickname') nickname: ElementRef | any  ;
+  @ViewChild('phone') phone: ElementRef | any  ;
  
   onSubmit(): any {
-    this.crudService.AddBook(this.bookForm.value)
-    .subscribe(() => {
-        console.log('Data added successfully!')
-        this.ngZone.run(() => this.router.navigateByUrl('/books-list'))
-      }, (err) => {
-        console.log(err);
-    });
+    
+    if(  this.nickname.nativeElement.value == ""  ){
+      this.nickname.nativeElement.value = "this the value";
+    } else {
+      this.crudService.AddBook(this.bookForm.value)
+      .subscribe(() => {
+          console.log('Data added successfully!')
+          this.ngZone.run(() => this.router.navigateByUrl('/books-list'))
+        }, (err) => {
+          console.log(err);
+      });
+    }     
   }
 
   @ViewChild('body') body: ElementRef | any  ;
