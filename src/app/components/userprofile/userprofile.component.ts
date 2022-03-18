@@ -79,3 +79,4 @@ export class UserprofileComponent implements AfterViewInit {
   }
 
 }
+

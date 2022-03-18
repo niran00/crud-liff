@@ -2,7 +2,7 @@
     <div class="vh-100 d-flex align-items-center justify-content-center">
        <div class="text-center">
         <p class="text-otp">Enter OTP</p>
-        <ng-otp-input (onInputChange)="onOtpChange($event)"  [config]="{length:4}" #ngOtpInput ></ng-otp-input> 
+        <ng-otp-input (onInputChange)="onOtpChange($event)"  [config]="{length:4, allowNumbersOnly: true}" #ngOtpInput ></ng-otp-input> 
        </div>
     </div>
 </div>

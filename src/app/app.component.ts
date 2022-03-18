@@ -1,48 +1,34 @@
-import {  Component, ElementRef, ViewChild, AfterViewInit, OnInit, NgZone } from '@angular/core';
+import {  Component, ElementRef, VERSION, ViewChild, AfterViewInit, OnInit, NgZone } from '@angular/core';
+import { Observable } from 'rxjs';
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
+
+type UnPromise<T> = T extends Promise<infer X>? X : T;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'my-crud-app';
 
-  @ViewChild('body') body: ElementRef | any  ;
-  @ViewChild('profile') profile: ElementRef | any  ;
-  @ViewChild('picutreUrl') picutreUrl: ElementRef | any  ;
-  @ViewChild('userId') userId: ElementRef | any  ;
-  @ViewChild('displayName') displayName: ElementRef | any  ;
-  @ViewChild('statusMessage') statusMessage: ElementRef | any  ;
-  @ViewChild('email') email: ElementRef | any  ;
-  
 
-  async  main() {
-    liff.ready.then(() => {
-      if (liff.getOS() === 'android') {
-        this.body.nativeElement.style.backgroundColor = '#888';
+
+export class AppComponent implements OnInit {
+  os: ReturnType<typeof liff.getOS>;  
+  profile: UnPromise<ReturnType<typeof liff.getProfile>> | undefined;
+  ngOnInit(): void {
+    liff.init({liffId:'1653761629-AMDmoZ6p'}).then(()=>{
+      this.os=liff.getOS();
+      if(liff.isLoggedIn()){
+        liff.getProfile().then( profile =>{
+          this.profile = profile;
+        }).catch(console.error);
+      }else{
+        liff.login()
       }
-      if (liff.isInClient()) {
-        this.getUserProfile();
-      }
-    });
-    await liff.init({ liffId: '1656955187-j6JWxVQG' });
-  }
-  
-  async getUserProfile() {
-    const profile = await liff.getProfile();
-    let profilePicture : any = this.picutreUrl.nativeElement.src ;
-    this.userId.nativeElement.innerHTML = '<b>UserID:</b>' + profile.userId;
-    this.displayName.nativeElement.innerHTML = '<b>Display Name: </b>' + profile.displayName;
-    this.statusMessage.nativeElement.innerHTML = '<b>Status : </b>' + profile.statusMessage;
-    this.email.nativeElement.innerHTML = "<b>Email : </b>" + liff.getDecodedIDToken()?.email;
-
-    profilePicture = profile.pictureUrl;
+    }).catch(console.error);
   }
 
-  ngAfterViewInit(): void { 
-    this.main();
-  }
+  displayName: string | any | []; 
+
 }
