@@ -35,18 +35,13 @@ export class UserprofileComponent implements AfterViewInit {
   @ViewChild('phone') phone: ElementRef | any  ;
  
   onSubmit(): any {
-    
-    if(  this.nickname.nativeElement.value == ""  ){
-      this.nickname.nativeElement.value = "this the value";
-    } else {
-      this.crudService.AddBook(this.bookForm.value)
-      .subscribe(() => {
-          console.log('Data added successfully!')
-          this.ngZone.run(() => this.router.navigateByUrl('/otp'))
-        }, (err) => {
-          console.log(err);
-      });
-    }     
+    this.crudService.AddBook(this.bookForm.value)
+    .subscribe(() => {
+        console.log('Data added successfully!')
+        this.ngZone.run(() => this.router.navigateByUrl('/otp'))
+      }, (err) => {
+        console.log(err);
+    }); 
   }
 
   @ViewChild('body') body: ElementRef | any  ;

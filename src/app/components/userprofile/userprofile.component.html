@@ -1,6 +1,6 @@
 <div #body id="body">
     <section #profile class="text-center pt-5" id="profile">
-      <img #picutreUrl class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
+      <img #picutreUrl style="height: 80px; width: 80px;" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
     
         <!-- <div class="container pt-3">
 
@@ -21,12 +21,12 @@
           
           <div class="form-group  mt-3">
             <label>Name</label>
-            <input #displayName class="form-control" type="text" formControlName="name" required>
+            <input #nickname class="form-control" type="text" formControlName="name" required>
           </div>
    
           <div class="form-group mt-3">
             <label>Phone Number</label>
-            <input #phone class="form-control " type="tel" formControlName="price" required>
+            <input #phone class="form-control " type="tel" maxlength="10" formControlName="price" required>
           </div>
    
           <!-- <div class="form-group">
