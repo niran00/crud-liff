@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 
 const routes: Routes = [
   {
-    path: '', 
-    pathMatch: 'full', 
-    redirectTo: 'add-book' },
+    path: '',
+    component: UserprofileComponent
+  },  
   { 
     path: 'books-list',
     component: BooksListComponent },
@@ -19,6 +20,10 @@ const routes: Routes = [
   { 
     path: 'edit-book/:id', 
     component: BookDetailComponent 
+  },
+  {
+    path: '**', 
+    component: UserprofileComponent
   }
 ];
 

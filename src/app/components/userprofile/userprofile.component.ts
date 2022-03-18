@@ -1,6 +1,9 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnInit, NgZone } from '@angular/core';
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
+import { Router } from '@angular/router';
+import { CrudService } from './../../service/crud.service';
+import { FormGroup, FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'app-userprofile',
@@ -11,6 +14,33 @@ import * as liffApi from '@liff/is-api-available';
 
 export class UserprofileComponent implements AfterViewInit {
 
+  bookForm: FormGroup;
+   
+  constructor(
+    public formBuilder: FormBuilder,
+    private router: Router,
+    private ngZone: NgZone,
+    private crudService: CrudService
+  ) { 
+    this.bookForm = this.formBuilder.group({
+      name: [''],
+      price: [''],
+      description: ['']
+    })
+  }
+ 
+  ngOnInit() { }
+ 
+  onSubmit(): any {
+    this.crudService.AddBook(this.bookForm.value)
+    .subscribe(() => {
+        console.log('Data added successfully!')
+        this.ngZone.run(() => this.router.navigateByUrl('/books-list'))
+      }, (err) => {
+        console.log(err);
+    });
+  }
+
   @ViewChild('body') body: ElementRef | any  ;
   @ViewChild('profile') profile: ElementRef | any  ;
   @ViewChild('picutreUrl') picutreUrl: ElementRef | any  ;
@@ -19,8 +49,6 @@ export class UserprofileComponent implements AfterViewInit {
   @ViewChild('statusMessage') statusMessage: ElementRef | any  ;
   @ViewChild('email') email: ElementRef | any  ;
   
-
-  constructor() { }
 
   async  main() {
     liff.ready.then(() => {
