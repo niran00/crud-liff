@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 const routes: Routes = [
   {
     path: '',
-    component: AppComponent
+    component: BooksListComponent
   },  
   { 
     path: 'books-list',
