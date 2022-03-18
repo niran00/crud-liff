@@ -1,14 +1,30 @@
 <div #body id="body">
     <section #profile class="text-center pt-5" id="profile">
-      <img #picutreUrl class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
+      <img style="width: 80px; height: 80px;" #picutreUrl class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
     
         <div class="container pt-3">
 
-          <p #userId id="userId"></p>
-          <p #displayName id="displayName"></p>
-          <p #statusMessage id="statusMessage"></p>
-          <p #email id="email"></p>
-      
+          <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label>Name</label>
+              <input class="form-control" type="text" formControlName="name" required>
+            </div>
+     
+            <div class="form-group">
+              <label>Price</label>
+              <input class="form-control" type="text" formControlName="price" required>
+            </div>
+     
+            <div class="form-group">
+              <label>Description</label>
+              <input class="form-control" type="text" formControlName="description" required>
+            </div>
+     
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" type="submit">Add Book</button>
+            </div>
+          </form>
+
         </div>
     
     </section>
