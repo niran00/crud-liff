@@ -1,8 +1,10 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, OnInit, NgZone } from '@angular/core';
+import {  Component, ElementRef, VERSION, ViewChild, AfterViewInit, OnInit, NgZone } from '@angular/core';
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
+
 import { Router } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
+
 
 type UnPromise<T> = T extends Promise<infer X>? X : T;
 
@@ -24,7 +26,7 @@ export class DashboardComponent implements OnInit {
 
 
   @ViewChild('body') body: ElementRef | any  ;
-  @ViewChild('profile') profile: ElementRef | any  ;
+  // @ViewChild('profile') profile: ElementRef | any  ;
   @ViewChild('picutreUrl') picutreUrl: ElementRef | any  ;
   @ViewChild('userId') userId: ElementRef | any  ;
   @ViewChild('displayName') displayName: ElementRef | any  ;
@@ -55,7 +57,7 @@ export class DashboardComponent implements OnInit {
   
 
   os: ReturnType<typeof liff.getOS>;  
-  lineprofile!: UnPromise<ReturnType<typeof liff.getProfile>>;
+  theprofile!: UnPromise<ReturnType<typeof liff.getProfile>>;
 
   ngOnInit(): void {
 
@@ -69,7 +71,7 @@ export class DashboardComponent implements OnInit {
 
     this.os=liff.getOS();
     liff.getProfile().then( profile =>{
-      this.profile = profile;
+      this.theprofile = profile;
     }).catch(console.error);
 
   }  
