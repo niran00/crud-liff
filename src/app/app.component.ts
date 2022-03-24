@@ -18,9 +18,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): any {
-    this.lineService.getLineData().subscribe((res) => {
-      alert("Service connected");
-    });
+    this.lineService.getLineData().subscribe()
   }
 
   

@@ -23,6 +23,7 @@ export class LineService {
           this.profile = profile;
         }).catch(console.error);
         this.osData.push(this.os);
+        alert(this.osData);
       }else{
         liff.login()
       }
