@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
 
 
   @ViewChild('body') body: ElementRef | any  ;
-  // @ViewChild('profile') profile: ElementRef | any  ;
+  @ViewChild('profile') profile: ElementRef | any  ;
   @ViewChild('picutreUrl') picutreUrl: ElementRef | any  ;
   @ViewChild('userId') userId: ElementRef | any  ;
   @ViewChild('displayName') displayName: ElementRef | any  ;

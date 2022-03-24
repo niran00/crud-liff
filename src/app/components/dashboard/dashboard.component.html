@@ -1,20 +1,22 @@
 
+<p>{{os}}</p>
+<p>{{theprofile.displayName}}</p>
 
 <section #profile class="text-center pt-5" id="profile">
-    <img #picutreUrl style="height: 80px; width: 80px;" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src={{theprofile.pictureUrl}} />
+    <img #picutreUrl style="height: 80px; width: 80px;" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
   
       <div class="container pt-3">
         
 
-        <p #userId id="userId"> {{theprofile.userId}}</p>
+        <p #userId id="userId"></p>
         <div *ngFor="let book of Books; let i = index; let last = last; ">
           <ng-container *ngIf="last">
             <p><strong>Name: </strong>{{book.name}}</p>
             <p><strong>Phone Number: </strong> {{book.price}}</p>
           </ng-container>
         </div>
-        <p #displayName id="displayName"> {{theprofile.displayName}} </p>
-        <p #statusMessage id="statusMessage"> {{theprofile.statusMessage}} </p>
+        <p #displayName id="displayName"></p>
+        <p #statusMessage id="statusMessage"></p>
         <p #email id="email"></p>
     
       </div>
