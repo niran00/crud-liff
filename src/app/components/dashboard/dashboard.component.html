@@ -5,6 +5,13 @@
       <div class="container pt-3">
 
         <p #userId id="userId"></p>
+        <tr *ngFor="let book of Books; let i = index; let last = last; ">
+          <ng-container *ngIf="last">
+            <td>{{book.name}}</td>
+            <td>{{book.price}}</td>
+            <td class="text-center">
+          </ng-container>
+        </tr>
         <p #displayName id="displayName"></p>
         <p #statusMessage id="statusMessage"></p>
         <p #email id="email"></p>

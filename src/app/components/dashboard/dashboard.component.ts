@@ -11,6 +11,8 @@ import { CrudService } from './../../service/crud.service';
 })
 export class DashboardComponent implements OnInit {
 
+  Books:any = [];
+
   constructor(
     private router: Router,
     private ngZone: NgZone,
@@ -50,6 +52,12 @@ export class DashboardComponent implements OnInit {
   
 
   ngOnInit(): void {
+
+    this.crudService.GetBooks().subscribe(res => {
+      console.log(res)
+      this.Books =res;
+    });  
+
     this.main();
     this.getUserProfile();
   }  
