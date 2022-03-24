@@ -11,7 +11,7 @@ type UnPromise<T> = T extends Promise<infer X>? X : T;
 export class LineService {
 
   private osData : any = [];
-
+  
   os: ReturnType<typeof liff.getOS>;  
   profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
   getLineData(): Observable<any> { 
