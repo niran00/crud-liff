@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     private lineService: LineService,
   ) { }
 
-  os: ReturnType<typeof liff.getOS>;  
+  osData: ReturnType<typeof liff.getOS>;  
 
   ngOnInit(): any {
     
