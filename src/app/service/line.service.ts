@@ -14,7 +14,7 @@ export class LineService {
   
   os: ReturnType<typeof liff.getOS>;  
   profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
-  getLineData(): Observable<any> { 
+  getLineData(): Observable<any[]> { 
     
     liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
       this.os=liff.getOS();

@@ -14,11 +14,12 @@ export class AppComponent implements OnInit {
 
 
   constructor(
-    private lineService: LineService,
+    public lineService: LineService,
   ) { }
 
   LineValues:any = [];  
 
+  os: ReturnType<typeof liff.getOS>;  
   ngOnInit(): any {
     
     this.lineService.getLineData().subscribe();
