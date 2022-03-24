@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
     private lineService: LineService,
   ) { }
 
+  os: ReturnType<typeof liff.getOS>;  
+  profile!: Promise<ReturnType<typeof liff.getProfile>>;
   ngOnInit(): any {
     this.lineService.getLineData().subscribe()
   }

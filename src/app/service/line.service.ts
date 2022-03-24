@@ -24,6 +24,7 @@ export class LineService {
         }).catch(console.error);
         this.osData.push(this.os);
         alert(this.osData);
+        
       }else{
         liff.login()
       }
