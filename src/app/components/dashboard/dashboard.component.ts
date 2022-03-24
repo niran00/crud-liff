@@ -1,10 +1,8 @@
-import {  Component, ElementRef, VERSION, ViewChild, AfterViewInit, OnInit, NgZone } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnInit, NgZone } from '@angular/core';
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
-
 import { Router } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
-
 
 type UnPromise<T> = T extends Promise<infer X>? X : T;
 
@@ -55,10 +53,7 @@ export class DashboardComponent implements OnInit {
     this.email.nativeElement.innerHTML = "<b>Email : </b>" + liff.getDecodedIDToken()?.email;
   }
   
-
-  os: ReturnType<typeof liff.getOS>;  
-  theprofile!: UnPromise<ReturnType<typeof liff.getProfile>>;
-
+  
   ngOnInit(): void {
 
     this.crudService.GetBooks().subscribe(res => {
@@ -68,11 +63,5 @@ export class DashboardComponent implements OnInit {
 
     this.main();
     this.getUserProfile();
-
-    this.os=liff.getOS();
-    liff.getProfile().then( profile =>{
-      this.theprofile = profile;
-    }).catch(console.error);
-
   }  
 }
