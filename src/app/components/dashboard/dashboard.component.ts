@@ -4,9 +4,6 @@ import * as liffApi from '@liff/is-api-available';
 import { Router } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
 
-
-type UnPromise<T> = T extends Promise<infer X>? X : T;
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -20,12 +17,9 @@ export class DashboardComponent implements OnInit {
     private crudService: CrudService
   ) { }
 
-  os: ReturnType<typeof liff.getOS>;  
-  profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
-
 
   @ViewChild('body') body: ElementRef | any  ;
-  // @ViewChild('profile') profile: ElementRef | any  ;
+  @ViewChild('profile') profile: ElementRef | any  ;
   @ViewChild('picutreUrl') picutreUrl: ElementRef | any  ;
   @ViewChild('userId') userId: ElementRef | any  ;
   @ViewChild('displayName') displayName: ElementRef | any  ;
@@ -53,22 +47,9 @@ export class DashboardComponent implements OnInit {
     this.statusMessage.nativeElement.innerHTML = '<b>Status : </b>' + profile.statusMessage;
     this.email.nativeElement.innerHTML = "<b>Email : </b>" + liff.getDecodedIDToken()?.email;
   }
+  
 
-  dotheThing(){
-    liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
-      this.os=liff.getOS();
-      if(liff.isLoggedIn()){
-        liff.getProfile().then( profile =>{
-          this.profile = profile;
-        }).catch(console.error);
-      }else{
-        liff.login()
-      }
-    }).catch(console.error);
-  }
-
-  ngOnInit(): void {    
-    this.dotheThing();
+  ngOnInit(): void {
     this.main();
     this.getUserProfile();
   }  
