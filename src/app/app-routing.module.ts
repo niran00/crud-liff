@@ -11,27 +11,27 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path: '/',
+    path: '',
     component: UserprofileComponent
   },  
   { 
-    path: '/dashboard',
+    path: 'dashboard',
     component: DashboardComponent 
   },
   { 
-    path: '/books-list',
+    path: 'books-list',
     component: BooksListComponent 
   },
   { 
-    path: '/add-book', 
+    path: 'add-book', 
     component: AddBookComponent 
   },
   { 
-    path: '/edit-book/:id', 
+    path: 'edit-book/:id', 
     component: BookDetailComponent 
   },
   { 
-    path: '/otp', 
+    path: 'otp', 
     component: OtpComponent 
   },
   {
