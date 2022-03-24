@@ -22,7 +22,11 @@ export class AppComponent implements OnInit {
   os: ReturnType<typeof liff.getOS>;  
   ngOnInit(): any {
     
-    this.lineService.getLineData().subscribe();
+    this.lineService.getLineData().subscribe(
+      res => {
+        console.log(res)
+      }
+    );
       
   }
 
