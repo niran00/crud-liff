@@ -1,4 +1,4 @@
-import {  Component, VERSION, ViewChild, OnInit, NgZone } from '@angular/core';
+import {  Component, ElementRef, VERSION, ViewChild, AfterViewInit, OnInit, NgZone } from '@angular/core';
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
 
