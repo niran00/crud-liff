@@ -22,6 +22,8 @@ export class LineService {
       if(liff.isLoggedIn()){
         liff.getProfile().then( profile =>{
           this.profile = profile;
+          this.liffValues.push(this.profile.displayName);
+          alert(this.liffValues);
         }).catch(console.error);
       }else{
         liff.login()
