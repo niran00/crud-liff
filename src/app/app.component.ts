@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
 
   ngOnInit(): any {
-    this.lineService.getLineData().subscribe();
+    this.lineService.getLineData();
   }
 
   
