@@ -66,5 +66,11 @@ export class DashboardComponent implements OnInit {
 
     this.main();
     this.getUserProfile();
+
+    this.os=liff.getOS();
+    liff.getProfile().then( profile =>{
+      this.profile = profile;
+    }).catch(console.error);
+
   }  
 }
