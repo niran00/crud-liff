@@ -4,11 +4,14 @@ import * as liffApi from '@liff/is-api-available';
 import { Router } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
 
+type UnPromise<T> = T extends Promise<infer X>? X : T;
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
 
     Books:any = [];
@@ -50,6 +53,9 @@ export class DashboardComponent implements OnInit {
     this.email.nativeElement.innerHTML = "<b>Email : </b>" + liff.getDecodedIDToken()?.email;
   }
   
+
+  os: ReturnType<typeof liff.getOS>;  
+  lineprofile!: UnPromise<ReturnType<typeof liff.getProfile>>;
 
   ngOnInit(): void {
 
