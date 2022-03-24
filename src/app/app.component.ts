@@ -22,8 +22,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): any {
     
     this.lineService.getLineData().subscribe(res => {
-      console.log(res)
-      this.LineValues =res;
+      console.log(liff.getProfile);
     });  
       
   }
