@@ -25,18 +25,26 @@ export class DashboardComponent implements OnInit {
   ) { }
 
 
-  
+  @ViewChild('body') body: ElementRef | any  ;
+  // @ViewChild('profile') profile: ElementRef | any  ;
+  // @ViewChild('picutreUrl') picutreUrl: ElementRef | any  ;
+  // @ViewChild('userId') userId: ElementRef | any  ;
+  // @ViewChild('displayName') displayName: ElementRef | any  ;
+  // @ViewChild('statusMessage') statusMessage: ElementRef | any  ;
   @ViewChild('email') email: ElementRef | any  ;
   
 
-  // async  main() {
-  //   liff.ready.then(() => {
-  //     if (liff.isInClient()) {
-  //       this.getUserProfile();
-  //     }
-  //   });
-  //   await liff.init({ liffId: '1656955187-j6JWxVQG' });
-  // }
+  async  main() {
+    liff.ready.then(() => {
+      if (liff.getOS() === 'android') {
+        this.body.nativeElement.style.backgroundColor = '#888';
+      }
+      if (liff.isInClient()) {
+        this.getUserProfile();
+      }
+    });
+    await liff.init({ liffId: '1656955187-j6JWxVQG' });
+  }
   
   async getUserProfile() {
     const profile = await liff.getProfile();
@@ -50,7 +58,6 @@ export class DashboardComponent implements OnInit {
 
   os: ReturnType<typeof liff.getOS>;  
   theprofile!: UnPromise<ReturnType<typeof liff.getProfile>>;
-  theemail!: UnPromise<ReturnType<typeof liff.getProfile>>;
 
   ngOnInit(): void {
 
@@ -59,14 +66,13 @@ export class DashboardComponent implements OnInit {
       this.Books =res;
     });  
 
-    // this.main();
+    this.main();
     this.getUserProfile();
 
     this.os=liff.getOS();
     liff.getProfile().then( profile =>{
       this.theprofile = profile;
     }).catch(console.error);
-
 
   }  
 }
