@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
+import { Observable, Subject } from 'rxjs';
 
 type UnPromise<T> = T extends Promise<infer X>? X : T;
 
@@ -9,21 +10,24 @@ type UnPromise<T> = T extends Promise<infer X>? X : T;
 })
 export class LineService {
 
-  public linePost = []; 
+  private osData : any = [];
 
   os: ReturnType<typeof liff.getOS>;  
   profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
-  ngOnInit(): void {
+  getLineData(): Observable<any> { 
+    
     liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
       this.os=liff.getOS();
       if(liff.isLoggedIn()){
         liff.getProfile().then( profile =>{
           this.profile = profile;
         }).catch(console.error);
+        this.osData.push(this.os);
       }else{
         liff.login()
       }
     }).catch(console.error);
+    return this.osData; 
   }
 
   constructor() { }
