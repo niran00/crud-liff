@@ -10,29 +10,26 @@ type UnPromise<T> = T extends Promise<infer X>? X : T;
 })
 export class LineService {
 
-  private osData : any = [];
   
+
   os: ReturnType<typeof liff.getOS>;  
   profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
+  private liffValues: any = [];
   
-  getLineData(): Observable<any[]> { 
-    
+  getLineData(): Observable<any> { 
     liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
       this.os=liff.getOS();
       if(liff.isLoggedIn()){
         liff.getProfile().then( profile =>{
           this.profile = profile;
         }).catch(console.error);
-        this.osData.push(this.os);
-        
-        
       }else{
         liff.login()
       }
     }).catch(console.error);
-    let osData = this.os + this.profile; 
-    return this.osData; 
+    return this.liffValues;
   }
+  
 
   constructor() { }
 }

@@ -3,7 +3,6 @@ import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
 import { Router } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
-import { LineService } from '../../service/line.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,13 +15,12 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private ngZone: NgZone,
     private crudService: CrudService,
-    private lineService: LineService,
   ) { }
 
 
 
   ngOnInit(): any {
-    this.lineService.getLineData().subscribe()
+  
   }
 
 }

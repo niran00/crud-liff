@@ -3,7 +3,7 @@ import { LineService } from './service/line.service';
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
 
-// type UnPromise<T> = T extends Promise<infer X>? X : T;
+type UnPromise<T> = T extends Promise<infer X>? X : T;
 
 @Component({
   selector: 'app-root',
@@ -14,20 +14,16 @@ export class AppComponent implements OnInit {
 
 
   constructor(
-    public lineService: LineService,
+    private lineService: LineService,
   ) { }
 
   LineValues:any = [];  
 
   os: ReturnType<typeof liff.getOS>;  
+  profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
+
   ngOnInit(): any {
-    
-    this.lineService.getLineData().subscribe(
-      res => {
-        console.log(res)
-      }
-    );
-      
+    this.lineService.getLineData().subscribe();
   }
 
   
