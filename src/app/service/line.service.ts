@@ -16,21 +16,20 @@ export class LineService {
   profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
   private liffValues: any = [];
   
-  getLineData(): Observable<any> { 
+  getLineData() { 
     liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
       this.os=liff.getOS();
       if(liff.isLoggedIn()){
         liff.getProfile().then( profile =>{
           this.profile = profile;
-          this.liffValues.push(this.profile + this.os);
-          
+          this.liffValues.push(this.profile.displayName);
+          return this.liffValues;
         }).catch(console.error);
       }else{
         liff.login()
       }
     }).catch(console.error);
-    return this.liffValues;
-    alert(this.liffValues);
+    
   }
   
 
