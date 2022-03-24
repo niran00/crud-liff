@@ -25,20 +25,12 @@ export class DashboardComponent implements OnInit {
   ) { }
 
 
-  // @ViewChild('body') body: ElementRef | any  ;
-  // @ViewChild('profile') profile: ElementRef | any  ;
-  // @ViewChild('picutreUrl') picutreUrl: ElementRef | any  ;
-  // @ViewChild('userId') userId: ElementRef | any  ;
-  // @ViewChild('displayName') displayName: ElementRef | any  ;
-  // @ViewChild('statusMessage') statusMessage: ElementRef | any  ;
-  // @ViewChild('email') email: ElementRef | any  ;
+  
+  @ViewChild('email') email: ElementRef | any  ;
   
 
   // async  main() {
   //   liff.ready.then(() => {
-  //     if (liff.getOS() === 'android') {
-  //       this.body.nativeElement.style.backgroundColor = '#888';
-  //     }
   //     if (liff.isInClient()) {
   //       this.getUserProfile();
   //     }
@@ -52,12 +44,13 @@ export class DashboardComponent implements OnInit {
     // this.userId.nativeElement.innerHTML = '<b>UserID:</b>' + profile.userId;
     // this.displayName.nativeElement.innerHTML = '<b>Display Name: </b>' + profile.displayName;
     // this.statusMessage.nativeElement.innerHTML = '<b>Status : </b>' + profile.statusMessage;
-    // this.email.nativeElement.innerHTML = "<b>Email : </b>" + liff.getDecodedIDToken()?.email;
+    this.email.nativeElement.innerHTML = "<b>Email : </b>" + liff.getDecodedIDToken()?.email;
   }
   
 
   os: ReturnType<typeof liff.getOS>;  
   theprofile!: UnPromise<ReturnType<typeof liff.getProfile>>;
+  theemail!: UnPromise<ReturnType<typeof liff.getProfile>>;
 
   ngOnInit(): void {
 
@@ -67,12 +60,13 @@ export class DashboardComponent implements OnInit {
     });  
 
     // this.main();
-    // this.getUserProfile();
+    this.getUserProfile();
 
     this.os=liff.getOS();
     liff.getProfile().then( profile =>{
       this.theprofile = profile;
     }).catch(console.error);
+
 
   }  
 }
