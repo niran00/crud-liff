@@ -22,14 +22,15 @@ export class LineService {
       if(liff.isLoggedIn()){
         liff.getProfile().then( profile =>{
           this.profile = profile;
-          this.liffValues.push(this.profile.displayName);
-          alert(this.liffValues);
+          this.liffValues.push(this.profile + this.os);
+          
         }).catch(console.error);
       }else{
         liff.login()
       }
     }).catch(console.error);
     return this.liffValues;
+    alert(this.liffValues);
   }
   
 

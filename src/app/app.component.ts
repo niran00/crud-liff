@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
     private lineService: LineService,
   ) { }
 
-  LineValues:any = [];  
 
   os: ReturnType<typeof liff.getOS>;  
   profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
