@@ -56,7 +56,7 @@ export class UserprofileComponent implements AfterViewInit {
   async  main() {
     liff.ready.then(() => {
       if (liff.getOS() === 'android') {
-        this.body.nativeElement.style.backgroundColor = '#888';
+        // this.body.nativeElement.style.backgroundColor = '#888';
       }
       if (liff.isInClient()) {
         this.getUserProfile();
