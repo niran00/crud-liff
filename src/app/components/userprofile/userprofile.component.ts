@@ -35,13 +35,20 @@ export class UserprofileComponent implements AfterViewInit {
   @ViewChild('phone') phone: ElementRef | any  ;
  
   onSubmit(): any {
-    this.crudService.AddBook(this.bookForm.value)
-    .subscribe(() => {
-        console.log('Data added successfully!')
-        this.ngZone.run(() => this.router.navigateByUrl('/otp'))
-      }, (err) => {
-        console.log(err);
-    }); 
+    if(this.bookForm.invalid){
+      return
+    } else{
+
+      this.crudService.AddBook(this.bookForm.value)
+      .subscribe(() => {
+          console.log('Data added successfully!')
+          this.ngZone.run(() => this.router.navigateByUrl('/otp'))
+        }, (err) => {
+          console.log(err);
+      }); 
+
+    }
+    
   }
 
   @ViewChild('body') body: ElementRef | any  ;
