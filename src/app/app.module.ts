@@ -8,6 +8,7 @@ import { NgOtpInputModule } from  'ng-otp-input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 
 
@@ -37,6 +38,7 @@ import { HeaderComponent } from './shared/header/header.component';
     MatToolbarModule,
     NgOtpInputModule,
     MatButtonModule,
+    MatInputModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
