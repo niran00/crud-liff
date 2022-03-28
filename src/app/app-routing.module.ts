@@ -7,6 +7,7 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { OtpComponent } from './components/otp/otp.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   { 
     path: 'dashboard',
     component: DashboardComponent 
+  },
+  { 
+    path: 'add-user',
+    component: AddUserComponent 
   },
   { 
     path: 'books-list',

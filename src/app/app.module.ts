@@ -20,6 +20,7 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
 import { OtpComponent } from './components/otp/otp.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { HeaderComponent } from './shared/header/header.component';
     UserprofileComponent,
     OtpComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
