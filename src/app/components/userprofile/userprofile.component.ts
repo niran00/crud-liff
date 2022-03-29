@@ -83,6 +83,7 @@ export class UserprofileComponent implements AfterViewInit {
 
   ngAfterViewInit(): void { 
     this.main();
+    this.getUserProfile();
   }
 
 }
