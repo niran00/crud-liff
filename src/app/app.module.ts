@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatCardModule} from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
@@ -35,7 +35,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
     DashboardComponent,
     HeaderComponent,
     AddUserComponent,
-    UsersListComponent
+    UsersListComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +43,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
     NgOtpInputModule,
     MatButtonModule,
     MatInputModule,
+    MatCardModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
