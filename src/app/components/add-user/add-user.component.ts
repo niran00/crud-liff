@@ -1,7 +1,10 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { UserService } from 'src/app/service/user.service';
+
+import liff from '@line/liff';
+import * as liffApi from '@liff/is-api-available';
  
 
 @Component({
@@ -11,7 +14,27 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class AddUserComponent implements OnInit {
 
+  @ViewChild('userId') userId: ElementRef | any  ;
+
+
+  async  main() {
+    liff.ready.then(() => {
+      if (liff.getOS() === 'android') {
   
+      }
+      if (liff.isInClient()) {
+        this.getUserProfile();
+      }
+    });
+    await liff.init({ liffId: '1656955187-j6JWxVQG' });
+  }
+  
+  async getUserProfile() {
+    const profile = await liff.getProfile();
+    this.userId.nativeElement.innerHTML = '<b>UserID:</b>' + profile.userId;
+  }
+
+
   userForm: FormGroup;
    
   constructor(
@@ -27,7 +50,10 @@ export class AddUserComponent implements OnInit {
     })
   }
  
-  ngOnInit() { }
+  ngOnInit() { 
+    this.main();
+    this.getUserProfile();
+  }
  
   onSubmit(): any {
     this.userService.AddUser(this.userForm.value)

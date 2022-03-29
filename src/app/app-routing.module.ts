@@ -12,16 +12,16 @@ import { UsersListComponent } from './components/users-list/users-list.component
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: UserprofileComponent
-  },  
+  // {
+  //   path: '',
+  //   component: UserprofileComponent
+  // },  
   { 
     path: 'dashboard',
     component: DashboardComponent 
   },
   { 
-    path: 'add-user',
+    path: '',
     component: AddUserComponent 
   },
   { 
