@@ -13,7 +13,6 @@ import * as liffApi from '@liff/is-api-available';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-  [x: string]: any;
 
  
   @ViewChild('userId') userId: ElementRef | any  ;
@@ -34,8 +33,7 @@ export class AddUserComponent implements OnInit {
   
   async getUserProfile() {
     const profile = await liff.getProfile();
-    let userIdVal = this.userId.nativeElement.value;
-    userIdVal = profile.userId;
+    this.userId.nativeElement.value =  profile.userId;
   }
 
 
@@ -48,7 +46,7 @@ export class AddUserComponent implements OnInit {
     private userService: UserService
   ) { 
     this.userForm = this.formBuilder.group({
-      userId: ['userIdVal'],
+      userId: [''],
       userName: [''],
       userPhoneNumber: ['']
     })
