@@ -14,13 +14,15 @@ import * as liffApi from '@liff/is-api-available';
 })
 export class AddUserComponent implements OnInit {
 
+ 
   @ViewChild('userId') userId: ElementRef | any  ;
 
+  
 
   async  main() {
     liff.ready.then(() => {
       if (liff.getOS() === 'android') {
-  
+       
       }
       if (liff.isInClient()) {
         this.getUserProfile();
