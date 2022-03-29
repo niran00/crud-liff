@@ -21,6 +21,7 @@ import { OtpComponent } from './components/otp/otp.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     OtpComponent,
     DashboardComponent,
     HeaderComponent,
-    AddUserComponent
+    AddUserComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

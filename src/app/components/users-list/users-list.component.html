@@ -16,7 +16,7 @@
   <img #picutreUrl style="height: 80px; width: 80px;" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
     
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h2 class="h2">Books List</h2>
+      <h2 class="h2">User List</h2>
     </div>
    
     <div class="table-responsive">
@@ -26,20 +26,18 @@
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Phone Number</th>
-            <!-- <th scope="col">Description</th> -->
             <th class="text-center" scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let book of Books; let i = index; let last = last; ">
+          <tr *ngFor="let user of Users; let i = index; ">
               <ng-container >
-                <th scope="row">{{book._id}}</th>
-                <td>{{book.name}}</td>
-                <td>{{book.price}}</td>
-                <!-- <td>{{book.description}}</td> -->
+                <th scope="row">{{user.userId}}</th>
+                <td>{{user.userName}}</td>
+                <td>{{user.userPhoneNumber}}</td>
                 <td class="text-center">
-                <button class="btn btn-sm btn-primary" routerLink="/edit-book/{{book._id}}">Edit</button>
-                <button class="btn btn-sm btn-danger" (click)="delete(book._id, i)">Delete</button>
+                <button class="btn btn-sm btn-primary" routerLink="/edit-user/{{user._id}}">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="delete(user._id, i)">Delete</button>
               </ng-container>
           </tr>
         </tbody>

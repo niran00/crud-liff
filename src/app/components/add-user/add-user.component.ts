@@ -33,7 +33,7 @@ export class AddUserComponent implements OnInit {
     this.userService.AddUser(this.userForm.value)
     .subscribe(() => {
         console.log('Data added successfully!')
-        this.ngZone.run(() => this.router.navigateByUrl('/books-list'))
+        this.ngZone.run(() => this.router.navigateByUrl('/users-list'))
       }, (err) => {
         console.log(err);
     });

@@ -34,7 +34,7 @@ export class UserService {
  
   // Get all objects
   GetUsers() {
-    return this.httpClient.get(`${this.REST_API}`);
+    return this.httpClient.get(`${this.REST_API}/user`);
   }
  
   // Get single object

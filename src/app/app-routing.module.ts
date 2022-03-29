@@ -8,6 +8,7 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
 import { OtpComponent } from './components/otp/otp.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   { 
     path: 'add-user',
     component: AddUserComponent 
+  },
+  { 
+    path: 'users-list',
+    component: UsersListComponent 
   },
   { 
     path: 'books-list',
