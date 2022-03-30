@@ -10,6 +10,9 @@ type UnPromise<T> = T extends Promise<infer X>? X : T;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   os: ReturnType<typeof liff.getOS>;  
   profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
   ngOnInit(): void {
