@@ -18,9 +18,20 @@ export class UserService {
   // Http Header
   // httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   httpHeaders = new HttpHeaders({ 'Access-Control-Allow-Origin': '*/*','content-type': 'application/json; charset=utf-8'}  )
+  http: any;
  
   constructor(private httpClient: HttpClient) { }
- 
+  
+  //Login
+  login(userId: string){
+    const authData : any = {userId: userId}
+    this.httpClient.post('https://afternoon-brook-66471.herokuapp.com/api/user/login' , authData)
+    .subscribe(response => {
+      console.log(response); 
+    })
+  }
+
+
   // Add
   AddUser(data: User): Observable<any> {
     let API_URL = `${this.REST_API}/add-user`;

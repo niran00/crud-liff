@@ -22,6 +22,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
     HeaderComponent,
     AddUserComponent,
     UsersListComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

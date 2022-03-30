@@ -9,6 +9,7 @@ import { OtpComponent } from './components/otp/otp.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
   { 
     path: 'dashboard',
     component: DashboardComponent 
+  },
+  { 
+    path: 'login',
+    component: LoginComponent 
   },
   { 
     path: 'add-user',

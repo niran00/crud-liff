@@ -1,0 +1,39 @@
+
+<div #body id="body">
+    <section #profile class="text-center pt-5" id="profile">
+  
+
+      
+<div class="container p-2">
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-12">
+        <form (submit)="onLogin(loginForm)" #loginForm="ngForm" >
+
+          <mat-form-field class="w-100 example-full-width" appearance="fill">
+            <mat-label>User Id</mat-label>
+            <input matInput  type="text" placeholder="User Id" #userIdInput="ngModel" name="userId" ngModel required>
+          </mat-form-field>
+        
+          <!-- <mat-form-field class="w-100" appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input  matInput type="text" placeholder="User Name" #userName="ngModel" name="userName" ngModel required>
+          </mat-form-field>
+          
+        
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>User Phone Number</mat-label>
+            <input  matInput type="tel" maxlength="10"  placeholder="Phone Number" #userPhoneNumber="ngModel" name="userPhoneNumber" ngModel required>
+          </mat-form-field> -->
+   
+          <button mat-raised-button class="w-100 mt-3" type="submit" color="primary">Login</button>
+          
+        </form>
+    </div>
+  </div>
+  </div>
+
+    
+  </section>
+
+</div>
