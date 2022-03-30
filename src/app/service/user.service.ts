@@ -23,9 +23,10 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
   
   //Login
-  login(userId: string){
+  login(userId: any) {
     const authData : any = {userId: userId}
-    this.httpClient.post('https://afternoon-brook-66471.herokuapp.com/api/login' , authData)
+    let API_URL = `${this.REST_API}/login`;
+    return this.httpClient.post(API_URL , authData)
     .subscribe(response => {
       console.log(response); 
     })
