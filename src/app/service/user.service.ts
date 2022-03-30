@@ -25,7 +25,7 @@ export class UserService {
   //Login
   login(userId: string){
     const authData : any = {userId: userId}
-    this.httpClient.post('https://afternoon-brook-66471.herokuapp.com/api/user/login' , authData)
+    this.httpClient.post('https://afternoon-brook-66471.herokuapp.com/api/login' , authData)
     .subscribe(response => {
       console.log(response); 
     })
