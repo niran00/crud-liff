@@ -20,15 +20,23 @@ export class UserService {
   httpHeaders = new HttpHeaders({ 'Access-Control-Allow-Origin': '*/*','content-type': 'application/json; charset=utf-8'}  )
   http: any;
  
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
+
+  private token : string ;
   
+  getToken(){
+    return this.token;
+  }
+
   //Login
   login(userId: any) {
     const authData : any = {userId: userId}
     let API_URL = `${this.REST_API}/login`;
-    return this.httpClient.post(API_URL , authData)
+    return this.httpClient.post<{token : string }>(API_URL , authData)
     .subscribe(response => {
       console.log(response); 
+      const token = response.token ;
+      this.token = token ;
     })
   }
 
