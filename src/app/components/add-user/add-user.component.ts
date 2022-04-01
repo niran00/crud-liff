@@ -57,7 +57,7 @@ export class AddUserComponent implements OnInit {
     this.getUserProfile();
 
     this.userForm.patchValue({
-     userId: "this.profId",
+     userId: this.profId,
      userName:  '',
      userPhoneNumber: ''
     });
