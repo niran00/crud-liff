@@ -57,7 +57,9 @@ export class AddUserComponent implements OnInit {
     this.getUserProfile();
 
     this.userForm.setValue({
-     userId: this.profId
+     userId: this.profId,
+     userName:  '',
+     userPhoneNumber: ''
     });
 
   }
