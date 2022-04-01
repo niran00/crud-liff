@@ -56,12 +56,12 @@ export class AddUserComponent implements OnInit {
     this.main();
     this.getUserProfile();
 
-    this.userForm.setValue({
-     userId: this.profId,
-     userName:  this.profId,
-     userPhoneNumber: this.profId
+    this.userForm.patchValue({
+     userId: "this.profId",
+     userName:  '',
+     userPhoneNumber: ''
     });
-    this.onSubmit();
+
   }
  
   onSubmit(): any {
