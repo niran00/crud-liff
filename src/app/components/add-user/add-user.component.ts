@@ -49,9 +49,9 @@ export class AddUserComponent implements OnInit {
     private userService: UserService
   ) { 
     this.userForm = this.formBuilder.group({
-      userId: [this.profId],
-      userName: [this.profId],
-      userPhoneNumber: [this.profId]
+      userId: ['this.profId'],
+      userName: ['this.profId'],
+      userPhoneNumber: ['this.profId']
     })
   }
  
