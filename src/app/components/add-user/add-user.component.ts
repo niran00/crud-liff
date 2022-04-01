@@ -58,10 +58,10 @@ export class AddUserComponent implements OnInit {
 
     this.userForm.setValue({
      userId: this.profId,
-     userName:  '',
-     userPhoneNumber: ''
+     userName:  this.profId,
+     userPhoneNumber: this.profId
     });
-
+    this.onSubmit();
   }
  
   onSubmit(): any {
