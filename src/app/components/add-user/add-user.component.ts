@@ -55,9 +55,8 @@ export class AddUserComponent implements OnInit {
   ngOnInit() { 
     this.main();
     this.getUserProfile();
-    this.onSubmit();
 
-    this.userForm.patchValue({
+    this.userForm.setValue({
      userId: this.profId
     });
 
