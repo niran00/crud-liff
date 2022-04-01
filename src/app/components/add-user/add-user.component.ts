@@ -58,7 +58,7 @@ export class AddUserComponent implements OnInit {
   ngOnInit() { 
     this.main();
     this.getUserProfile();
-
+    this.onSubmit();
   }
  
   onSubmit(): any {
