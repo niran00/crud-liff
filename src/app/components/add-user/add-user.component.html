@@ -7,7 +7,7 @@
           <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
               <label>User Id</label>
-              <input  #userId id="userId" class="form-control" type="text" formControlName="userId" readonly required>
+              <input   class="form-control" type="text" #userId id="userId" formControlName="userId"  required>
        
             </div>
      
