@@ -5,6 +5,12 @@
         <button mat-raised-button class="ms-2" routerLink="/" >Home</button>
         <button mat-raised-button class="ms-2" routerLink="/otp">OTP</button>
         <button mat-raised-button class="ms-2" routerLink="dashboard">Dashboard</button>
-        <button mat-raised-button class="ms-2" routerLink="/login" >Login</button>
+        <button mat-raised-button class="ms-2" routerLink="/users-list" >Users</button>
+      
+        <button  *ngIf="!userIsAuthenicated"  mat-raised-button class="ms-2" routerLink="/login" >Login</button>
+        
+        <button *ngIf="userIsAuthenicated" mat-raised-button class="ms-2" (click)="onLogout()" >Logout</button>
+        
+       
     </div> 
 </mat-toolbar>

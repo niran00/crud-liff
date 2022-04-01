@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from './User';
 import { catchError, map } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
  
 
 @Injectable({
@@ -17,15 +18,25 @@ export class UserService {
  
   // Http Header
   // httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  httpHeaders = new HttpHeaders({ 'Access-Control-Allow-Origin': '*/*','content-type': 'application/json; charset=utf-8'}  )
+  httpHeaders = new HttpHeaders({ 'Access-Control-Allow-Origin': '*/*', 'content-type': 'application/json; charset=utf-8' }  )
   http: any;
  
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   private token : string ;
+  private isAuthenticated = false
+  private authStatusListener = new Subject<boolean>(); 
   
   getToken(){
     return this.token;
+  }
+
+  getIsAuth(){
+    return this.isAuthenticated;
+  }
+
+  getAuthStatusListener(){
+    return this.authStatusListener.asObservable();
   }
 
   //Login
@@ -37,7 +48,20 @@ export class UserService {
       console.log(response); 
       const token = response.token ;
       this.token = token ;
+      if(token){
+        this.isAuthenticated = true;
+        this.authStatusListener.next(true);
+      }
+      this.router.navigate(['/dashboard']);
     })
+  }
+
+  //Logout
+  logout(){
+    this.token = null;
+    this.isAuthenticated = false;
+    this.authStatusListener.next(false);
+    this.router.navigate(['/login']);
   }
 
 

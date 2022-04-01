@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { NgOtpInputModule } from  'ng-otp-input';
@@ -23,6 +23,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './service/auth-interceptor';
 
 
 @NgModule({
@@ -52,7 +53,9 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

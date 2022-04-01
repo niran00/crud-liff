@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
@@ -10,6 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './service/auth.guard';
 
 
 const routes: Routes = [
@@ -19,7 +21,8 @@ const routes: Routes = [
   },  
   { 
     path: 'dashboard',
-    component: DashboardComponent 
+    component: DashboardComponent, 
+    canActivate: [AuthGuard] 
   },
   { 
     path: 'login',
@@ -43,7 +46,8 @@ const routes: Routes = [
   },
   { 
     path: 'edit-book/:id', 
-    component: BookDetailComponent 
+    component: BookDetailComponent,
+    canActivate: [AuthGuard] 
   },
   { 
     path: 'otp', 
@@ -57,6 +61,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
