@@ -23,7 +23,7 @@ export class UserprofileComponent implements AfterViewInit {
     private crudService: CrudService
   ) { 
     this.bookForm = this.formBuilder.group({
-      name: [this.profile.userId],
+      name: [''],
       price: [''],
       description: ['']
     })
