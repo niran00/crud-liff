@@ -16,7 +16,8 @@ export class AddUserComponent implements OnInit {
 
  
   @ViewChild('userId') userId: ElementRef | any  ;
-  profId: any;
+
+  
 
   async  main() {
     liff.ready.then(() => {
@@ -33,7 +34,6 @@ export class AddUserComponent implements OnInit {
   async getUserProfile() {
     const profile = await liff.getProfile();
     this.userId.nativeElement.value =  profile.userId;
-    const profId = profile.userId
   }
 
 
@@ -55,13 +55,6 @@ export class AddUserComponent implements OnInit {
   ngOnInit() { 
     this.main();
     this.getUserProfile();
-
-    this.userForm.patchValue({
-     userId: this.profId,
-     userName:  '',
-     userPhoneNumber: ''
-    });
-
   }
  
   onSubmit(): any {
