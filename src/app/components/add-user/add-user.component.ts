@@ -36,6 +36,7 @@ export class AddUserComponent implements OnInit {
     const profile = await liff.getProfile();
     this.userId.nativeElement.value =  profile.userId;
     const profId = profile.userId
+  
   }
 
 
@@ -49,8 +50,8 @@ export class AddUserComponent implements OnInit {
   ) { 
     this.userForm = this.formBuilder.group({
       userId: [this.profId],
-      userName: [''],
-      userPhoneNumber: ['']
+      userName: [this.profId],
+      userPhoneNumber: [this.profId]
     })
   }
  
