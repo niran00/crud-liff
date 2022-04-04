@@ -57,17 +57,13 @@ export class AddUserComponent implements OnInit {
     private ngZone: NgZone,
     private userService: UserService
   ) { 
-   
+    this.userForm = this.formBuilder.group({
+      userId: [''],
+      userName: [''],
+      userPhoneNumber: ['']
+    });
   }
  
-  // ngOnInit() { 
-  //   this.main();
-  //   this.getUserProfile();
-
-  //   this.finalUserId = this.getUserProfile();
-  //   alert(this.finalUserId);
-   
-  // }
 
 
    ngOnInit() {
@@ -75,24 +71,24 @@ export class AddUserComponent implements OnInit {
     liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
       this.os = liff.getOS();
       if(liff.isLoggedIn()){
-        liff.getProfile().then( async profile =>{
+        liff.getProfile().then( profile =>{
           this.profile = profile;
-          
-           this.theId = await this.profile.userId;  
-           alert(this.theId);
-          this.userForm =  this.formBuilder.group({
-           userId: [this.theId],
-           userName: [this.profile.userId],
-           userPhoneNumber: [this.theId]
+          alert( this.profile.userId);
+           this.theId = this.profile.userId;  
+
+           this.userForm = this.formBuilder.group({
+            userId: [this.profile.userId],
+            userName: [this.profile.userId],
+            userPhoneNumber: [this.profile.userId]
           });
 
         }).catch(console.error);
       }else{
         // liff.login();
-       
+        alert( "yes");
         this.theId = 'this.profile.userId';  
 
-        this.userForm = this.formBuilder.group({
+        this.userForm.patchValue({
           userId: [this.theId],
           userName: ['aa'],
           userPhoneNumber: [this.theId]
