@@ -49,7 +49,7 @@ export class AddUserComponent implements OnInit {
     private userService: UserService
   ) { 
     this.userForm = this.formBuilder.group({
-      userId: ['qwe'],
+      userId: [''],
       userName: [''],
       userPhoneNumber: ['']
     })
@@ -57,10 +57,12 @@ export class AddUserComponent implements OnInit {
  
   ngOnInit() { 
     this.main();
-    this.getUserProfile();
+    this.getUserProfile().then(r=>{
+      this.finalUserId =r
+      alert(r)
+    })
 
-    this.finalUserId = this.getUserProfile();
-    alert(this.finalUserId)
+    //this.finalUserId = this.getUserProfile();
    
   }
  
