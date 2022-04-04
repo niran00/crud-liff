@@ -31,10 +31,9 @@ export class AddUserComponent implements OnInit {
     await liff.init({ liffId: '1656955187-j6JWxVQG' });
   }
   
-  finalMovies : any = '';
   async getUserProfile() {
     const profile = await liff.getProfile();
-    return profile.userId;
+    this.userId.nativeElement.value =  profile.userId;
   }
 
 
@@ -47,7 +46,7 @@ export class AddUserComponent implements OnInit {
     private userService: UserService
   ) { 
     this.userForm = this.formBuilder.group({
-      userId: [this.finalMovies],
+      userId: [''],
       userName: [''],
       userPhoneNumber: ['']
     })
@@ -56,8 +55,6 @@ export class AddUserComponent implements OnInit {
   ngOnInit() { 
     this.main();
     this.getUserProfile();
-    this.finalMovies = this.getUserProfile();
-    alert(this.finalMovies.json());
   }
  
   onSubmit(): any {
