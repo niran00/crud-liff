@@ -61,7 +61,7 @@ export class AddUserComponent implements OnInit {
     this.heroForm = this.formBuilder.group({
       userId: [this.theUserId],
       userName: [this.theUserId],
-      userPhoneNumber: [this.theValue]
+      userPhoneNumber: [this.theUserId]
     })
   }
  
@@ -83,7 +83,7 @@ export class AddUserComponent implements OnInit {
 
   theValue: string = 'my ID';
 
-  model = new Hero(this.theValue, this.theValue, this.theValue);
+  model = new Hero(this.theUserId, this.theUserId, this.theUserId);
 
   submitted = false;
 
