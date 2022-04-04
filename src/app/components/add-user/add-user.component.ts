@@ -5,10 +5,7 @@ import { UserService } from 'src/app/service/user.service';
 
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
-
-
-import { Hero } from './hero';
-
+ 
 
 @Component({
   selector: 'app-add-user',
@@ -16,7 +13,6 @@ import { Hero } from './hero';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-
 
  
   @ViewChild('userId') userId: ElementRef | any  ;
@@ -35,15 +31,12 @@ export class AddUserComponent implements OnInit {
     await liff.init({ liffId: '1656955187-j6JWxVQG' });
   }
   
-  theUserId : string = ''; 
-
+  finalMovies : any = '';
   async getUserProfile() {
     const profile = await liff.getProfile();
-    const maketheId = profile.userId;
-    this.theUserId = maketheId;
+    return profile.userId;
   }
 
-  
 
   userForm: FormGroup;
    
@@ -54,46 +47,21 @@ export class AddUserComponent implements OnInit {
     private userService: UserService
   ) { 
     this.userForm = this.formBuilder.group({
-      userId: [this.theValue],
-      userName: [this.theValue],
-      userPhoneNumber: [this.theValue]
-    })
-    this.heroForm = this.formBuilder.group({
-      userId: [this.theUserId],
-      userName: [this.theUserId],
-      userPhoneNumber: [this.theUserId]
+      userId: [''],
+      userName: [''],
+      userPhoneNumber: ['']
     })
   }
  
   ngOnInit() { 
     this.main();
     this.getUserProfile();
-    alert(this.theUserId);
+    this.finalMovies = this.getUserProfile();
+    alert(this.finalMovies);
   }
  
   onSubmit(): any {
     this.userService.AddUser(this.userForm.value)
-    .subscribe(() => {
-        console.log('Data added successfully!')
-        this.ngZone.run(() => this.router.navigateByUrl('/users-list'))
-      }, (err) => {
-        console.log(err);
-    });
-  }
-
-
-  theValue: string = 'my ID';
-
-  model = new Hero(this.theValue, this.theValue, this.theValue);
-
-  submitted = false;
-
-  heroForm: FormGroup;
-
-  
-  onSubmitForm() {
-    this.submitted = true;
-    this.userService.AddUser(this.heroForm.value)
     .subscribe(() => {
         console.log('Data added successfully!')
         this.ngZone.run(() => this.router.navigateByUrl('/users-list'))
