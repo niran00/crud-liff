@@ -47,7 +47,7 @@ export class AddUserComponent implements OnInit {
     private userService: UserService
   ) { 
     this.userForm = this.formBuilder.group({
-      userId: [''],
+      userId: [this.finalMovies],
       userName: [''],
       userPhoneNumber: ['']
     })
@@ -57,7 +57,7 @@ export class AddUserComponent implements OnInit {
     this.main();
     this.getUserProfile();
     this.finalMovies = this.getUserProfile();
-    alert(this.finalMovies.userId);
+    alert(this.finalMovies.JSON.stringify());
   }
  
   onSubmit(): any {
