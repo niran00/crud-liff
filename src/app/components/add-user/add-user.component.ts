@@ -31,11 +31,14 @@ export class AddUserComponent implements OnInit {
     await liff.init({ liffId: '1656955187-j6JWxVQG' });
   }
   
+  finalUserId : any = "";
   async getUserProfile() {
     const profile = await liff.getProfile();
     this.userId.nativeElement.value =  profile.userId;
+    return profile.userId;
   }
 
+  
 
   userForm: FormGroup;
    
@@ -55,6 +58,10 @@ export class AddUserComponent implements OnInit {
   ngOnInit() { 
     this.main();
     this.getUserProfile();
+    
+    this.finalUserId = this.getUserProfile();
+    alert(this.finalUserId)
+   
   }
  
   onSubmit(): any {
