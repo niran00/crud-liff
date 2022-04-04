@@ -39,7 +39,7 @@ export class AddUserComponent implements OnInit {
 
   async getUserProfile() {
     const profile = await liff.getProfile();
-    this.userId.nativeElement.value =  profile.userId;
+    
     let theUserId = profile.userId;
   }
 
@@ -54,9 +54,9 @@ export class AddUserComponent implements OnInit {
     private userService: UserService
   ) { 
     this.userForm = this.formBuilder.group({
-      userId: [this.theUserId],
-      userName: [''],
-      userPhoneNumber: ['']
+      userId: [this.theValue],
+      userName: [this.theValue],
+      userPhoneNumber: [this.theValue]
     })
     this.heroForm = this.formBuilder.group({
       userId: [this.theUserId],
@@ -68,7 +68,6 @@ export class AddUserComponent implements OnInit {
   ngOnInit() { 
     this.main();
     this.getUserProfile();
-    alert(this.theUserId);
   }
  
   onSubmit(): any {
@@ -84,7 +83,7 @@ export class AddUserComponent implements OnInit {
 
   theValue: string = 'my ID';
 
-  model = new Hero(this.theUserId, this.theUserId, this.theUserId);
+  model = new Hero(this.theValue, this.theValue, this.theValue);
 
   submitted = false;
 
