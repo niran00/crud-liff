@@ -39,7 +39,7 @@ export class AddUserComponent implements OnInit {
 
   async getUserProfile() {
     const profile = await liff.getProfile();
-    
+    this.userId.nativeElement.value =  profile.userId;
     let theUserId = profile.userId;
   }
 
