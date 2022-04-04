@@ -56,7 +56,7 @@ export class AddUserComponent implements OnInit {
     private userService: UserService
   ) { 
     this.userForm = this.formBuilder.group({
-      userId: [''],
+      userId: [this.profile.userId],
       userName: [''],
       userPhoneNumber: ['']
     })
@@ -78,13 +78,15 @@ export class AddUserComponent implements OnInit {
       if(liff.isLoggedIn()){
         liff.getProfile().then( profile =>{
           this.profile = profile;
+          alert( this.profile.userId);
         }).catch(console.error);
       }else{
-        liff.login()
+        // liff.login();
+        alert( "yes");
       }
     }).catch(console.error);
 
-    alert(this.profile.userId);
+   
   }
  
   onSubmit(): any {
