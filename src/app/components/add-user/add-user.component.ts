@@ -57,9 +57,11 @@ export class AddUserComponent implements OnInit {
  
   ngOnInit() { 
     this.main();
-    this.getUserProfile().then(r=>{
-      this.finalUserId =r
-      alert(r)
+    new Promise(async (resolve, reject)=>{
+      const data = await this.getUserProfile()
+      alert(data)
+
+      resolve(data)
     })
 
     //this.finalUserId = this.getUserProfile();
