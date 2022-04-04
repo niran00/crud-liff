@@ -81,9 +81,9 @@ export class AddUserComponent implements OnInit {
            this.theId = this.profile.userId;  
 
            this.userForm = this.formBuilder.group({
-            userId: [this.theId],
-            userName: ['aa'],
-            userPhoneNumber: [this.theId]
+            userId: [this.profile.userId],
+            userName: [this.profile.userId],
+            userPhoneNumber: [this.profile.userId]
           })
 
         }).catch(console.error);
