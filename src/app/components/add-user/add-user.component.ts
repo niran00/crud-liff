@@ -58,12 +58,12 @@ export class AddUserComponent implements OnInit {
     })
   }
  
-  ngOnInit() { 
+  async ngOnInit() { 
     this.main();
     this.getUserProfile();
 
     let finalUserId = this.getUserProfile();
-    alert(finalUserId)
+    alert( await finalUserId);
    
   }
  
