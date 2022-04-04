@@ -65,8 +65,8 @@ export class AddUserComponent implements OnInit {
     this.main();
     this.getUserProfile();
 
-    let finalUserId = this.getUserProfile();
-    alert(this.finalUserId)
+    this.finalUserId = this.getUserProfile();
+    alert(this.finalUserId);
    
   }
  
