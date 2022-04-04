@@ -78,22 +78,13 @@ export class AddUserComponent implements OnInit {
 
            this.userForm = this.formBuilder.group({
             userId: [this.profile.userId],
-            userName: [this.profile.userId],
-            userPhoneNumber: [this.profile.userId]
+            userName: [''],
+            userPhoneNumber: ['']
           });
 
         }).catch(console.error);
       }else{
         // liff.login();
-        alert( "yes");
-        this.theId = 'this.profile.userId';  
-
-        this.userForm.patchValue({
-          userId: [this.theId],
-          userName: ['aa'],
-          userPhoneNumber: [this.theId]
-        })
-
       }
     }).catch(console.error);
    
