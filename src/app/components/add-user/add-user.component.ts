@@ -45,7 +45,7 @@ export class AddUserComponent implements OnInit {
     return profile.userId;
   }
 
-  
+  theId : any = '';
 
   userForm: FormGroup;
    
@@ -56,7 +56,7 @@ export class AddUserComponent implements OnInit {
     private userService: UserService
   ) { 
     this.userForm = this.formBuilder.group({
-      userId: [this.profile.userId],
+      userId: [this.theId],
       userName: [''],
       userPhoneNumber: ['']
     })
@@ -79,6 +79,8 @@ export class AddUserComponent implements OnInit {
         liff.getProfile().then( profile =>{
           this.profile = profile;
           alert( this.profile.userId);
+           this.theId = this.profile.userId;  
+
         }).catch(console.error);
       }else{
         // liff.login();
