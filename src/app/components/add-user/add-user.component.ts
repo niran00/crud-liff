@@ -49,7 +49,7 @@ export class AddUserComponent implements OnInit {
     private userService: UserService
   ) { 
     this.userForm = this.formBuilder.group({
-      userId: [''],
+      userId: ['qwe'],
       userName: [''],
       userPhoneNumber: ['']
     })
@@ -60,7 +60,7 @@ export class AddUserComponent implements OnInit {
     this.getUserProfile();
 
     this.finalUserId = this.getUserProfile();
-    alert(this.finalUserId.res)
+    alert(this.finalUserId)
    
   }
  
