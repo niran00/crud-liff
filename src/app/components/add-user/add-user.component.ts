@@ -1,11 +1,14 @@
 import { Component, ElementRef, ViewChild, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from "@angular/forms";
+import { Observable } from 'rxjs';
 import { UserService } from 'src/app/service/user.service';
 
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
- 
+
+
+type UnPromise<T> = T extends Promise<infer X>? X : T;
 
 @Component({
   selector: 'app-add-user',
@@ -58,12 +61,12 @@ export class AddUserComponent implements OnInit {
     })
   }
  
-  async ngOnInit() { 
+  ngOnInit() { 
     this.main();
     this.getUserProfile();
 
     let finalUserId = this.getUserProfile();
-    alert( await finalUserId);
+    alert(this.finalUserId)
    
   }
  
