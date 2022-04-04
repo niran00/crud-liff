@@ -19,6 +19,7 @@ export class AddUserComponent implements OnInit {
 
  
   @ViewChild('userId') userId: ElementRef | any  ;
+  profile: any;
 
   
 
@@ -61,13 +62,27 @@ export class AddUserComponent implements OnInit {
     })
   }
  
-  ngOnInit() { 
-    this.main();
-    this.getUserProfile();
+  // ngOnInit() { 
+  //   this.main();
+  //   this.getUserProfile();
 
-    this.finalUserId = this.getUserProfile();
-    alert(this.finalUserId);
+  //   this.finalUserId = this.getUserProfile();
+  //   alert(this.finalUserId);
    
+  // }
+
+
+   ngOnInit() {
+    liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
+      const os = liff.getOS();
+      if(liff.isLoggedIn()){
+        liff.getProfile().then( profile =>{
+          this.profile = profile;
+        }).catch(console.error);
+      }else{
+        liff.login()
+      }
+    }).catch(console.error);
   }
  
   onSubmit(): any {
