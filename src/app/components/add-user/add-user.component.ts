@@ -17,9 +17,11 @@ type UnPromise<T> = T extends Promise<infer X>? X : T;
 })
 export class AddUserComponent implements OnInit {
 
+  os: ReturnType<typeof liff.getOS>;  
+  profile: UnPromise<ReturnType<typeof liff.getProfile>>;
  
   @ViewChild('userId') userId: ElementRef | any  ;
-  profile: any;
+  
 
   
 
@@ -55,11 +57,7 @@ export class AddUserComponent implements OnInit {
     private ngZone: NgZone,
     private userService: UserService
   ) { 
-    this.userForm = this.formBuilder.group({
-      userId: [this.theId],
-      userName: [''],
-      userPhoneNumber: ['']
-    })
+   
   }
  
   // ngOnInit() { 
@@ -73,21 +71,35 @@ export class AddUserComponent implements OnInit {
 
 
    ngOnInit() {
+   
     liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
-      const os = liff.getOS();
+      this.os = liff.getOS();
       if(liff.isLoggedIn()){
         liff.getProfile().then( profile =>{
           this.profile = profile;
           alert( this.profile.userId);
            this.theId = this.profile.userId;  
 
+           this.userForm = this.formBuilder.group({
+            userId: [this.theId],
+            userName: ['aa'],
+            userPhoneNumber: [this.theId]
+          })
+
         }).catch(console.error);
       }else{
         // liff.login();
         alert( "yes");
+        this.theId = 'this.profile.userId';  
+
+        this.userForm = this.formBuilder.group({
+          userId: [this.theId],
+          userName: ['aa'],
+          userPhoneNumber: [this.theId]
+        })
+
       }
     }).catch(console.error);
-
    
   }
  
