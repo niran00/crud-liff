@@ -75,16 +75,16 @@ export class AddUserComponent implements OnInit {
     liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
       this.os = liff.getOS();
       if(liff.isLoggedIn()){
-        liff.getProfile().then( profile =>{
+        liff.getProfile().then( async profile =>{
           this.profile = profile;
           alert( this.profile.userId);
            this.theId = this.profile.userId;  
 
            this.userForm = this.formBuilder.group({
-            userId: [this.profile.userId],
-            userName: [this.profile.userId],
-            userPhoneNumber: [this.profile.userId]
-          })
+            userId: [await this.profile.userId],
+            userName: [await this.profile.userId],
+            userPhoneNumber: [ await this.profile.userId]
+          });
 
         }).catch(console.error);
       }else{
