@@ -57,7 +57,7 @@ export class AddUserComponent implements OnInit {
     this.main();
     this.getUserProfile();
     this.finalMovies = this.getUserProfile();
-    alert(this.finalMovies.JSON.stringify());
+    alert(this.finalMovies.json());
   }
  
   onSubmit(): any {
