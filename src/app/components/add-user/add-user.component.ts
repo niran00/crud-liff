@@ -83,6 +83,8 @@ export class AddUserComponent implements OnInit {
         liff.login()
       }
     }).catch(console.error);
+
+    alert(this.profile.userId);
   }
  
   onSubmit(): any {
