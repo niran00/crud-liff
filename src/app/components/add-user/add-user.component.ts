@@ -5,7 +5,10 @@ import { UserService } from 'src/app/service/user.service';
 
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
- 
+
+
+import { Hero } from './hero';
+
 
 @Component({
   selector: 'app-add-user',
@@ -13,6 +16,7 @@ import * as liffApi from '@liff/is-api-available';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
+
 
  
   @ViewChild('userId') userId: ElementRef | any  ;
@@ -31,11 +35,15 @@ export class AddUserComponent implements OnInit {
     await liff.init({ liffId: '1656955187-j6JWxVQG' });
   }
   
+  theUserId : string = ''; 
+
   async getUserProfile() {
     const profile = await liff.getProfile();
     this.userId.nativeElement.value =  profile.userId;
+    let theUserId = profile.userId;
   }
 
+  
 
   userForm: FormGroup;
    
@@ -50,6 +58,11 @@ export class AddUserComponent implements OnInit {
       userName: [''],
       userPhoneNumber: ['']
     })
+    this.heroForm = this.formBuilder.group({
+      userId: [this.theUserId],
+      userName: [this.theValue],
+      userPhoneNumber: [this.theValue]
+    })
   }
  
   ngOnInit() { 
@@ -59,6 +72,27 @@ export class AddUserComponent implements OnInit {
  
   onSubmit(): any {
     this.userService.AddUser(this.userForm.value)
+    .subscribe(() => {
+        console.log('Data added successfully!')
+        this.ngZone.run(() => this.router.navigateByUrl('/users-list'))
+      }, (err) => {
+        console.log(err);
+    });
+  }
+
+
+  theValue: string = 'my ID';
+
+  model = new Hero(this.theValue, this.theValue, this.theValue);
+
+  submitted = false;
+
+  heroForm: FormGroup;
+
+  
+  onSubmitForm() {
+    this.submitted = true;
+    this.userService.AddUser(this.heroForm.value)
     .subscribe(() => {
         console.log('Data added successfully!')
         this.ngZone.run(() => this.router.navigateByUrl('/users-list'))
