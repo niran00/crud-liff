@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnInit, NgZone } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, AfterViewInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { UserService } from 'src/app/service/user.service';
@@ -64,7 +64,7 @@ export class AddUserComponent implements OnInit {
     })
   }
  
-  ngOnInit() { 
+  ngAfterViewInit() { 
     this.main();
     this.getUserProfile();
     alert(this.theUserId);
