@@ -60,7 +60,7 @@ export class AddUserComponent implements OnInit {
     })
     this.heroForm = this.formBuilder.group({
       userId: [this.theUserId],
-      userName: [this.theValue],
+      userName: [this.theUserId],
       userPhoneNumber: [this.theValue]
     })
   }
