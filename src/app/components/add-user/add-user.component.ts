@@ -81,6 +81,8 @@ export class AddUserComponent implements OnInit {
             userName: [''],
             userPhoneNumber: ['']
           });
+          
+          this.userService.login(this.theId);
 
         }).catch(console.error);
       }else{
@@ -97,8 +99,6 @@ export class AddUserComponent implements OnInit {
       }
     }).catch(console.error);
 
-    this.userId = this.profile.userId;
-    this.userService.login(this.userId);
    
   }
  
