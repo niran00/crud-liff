@@ -73,7 +73,7 @@ export class AddUserComponent implements OnInit {
       if(liff.isLoggedIn()){
         liff.getProfile().then( profile =>{
           this.profile = profile;
-          alert( this.profile.userId);
+         
            this.theId = this.profile.userId;  
 
            this.userForm = this.formBuilder.group({
