@@ -7,10 +7,10 @@
         
 
         <p #userId id="userId"></p>
-        <div *ngFor="let book of Books; let i = index; let last = last; ">
-          <ng-container *ngIf="last">
-            <p><strong>Name: </strong>{{book.name}}</p>
-            <p><strong>Phone Number: </strong> {{book.price}}</p>
+        <div *ngFor="let user of Users; let i = index; let last = last; ">
+          <ng-container >
+            <p><strong>Name: </strong>{{user.userName}}</p>
+            <p><strong>Phone Number: </strong> {{user.userPhoneNumber}}</p>
           </ng-container>
         </div>
         <p #displayName id="displayName"></p>

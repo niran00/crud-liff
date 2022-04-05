@@ -3,6 +3,7 @@ import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
 import { Router } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
+import { UserService } from './../../service/user.service';
 
 type UnPromise<T> = T extends Promise<infer X>? X : T;
 
@@ -14,12 +15,13 @@ type UnPromise<T> = T extends Promise<infer X>? X : T;
 
 export class DashboardComponent implements OnInit {
 
-    Books:any = [];
+    Users:any = [];
 
   constructor(
     private router: Router,
     private ngZone: NgZone,
-    private crudService: CrudService
+    private crudService: CrudService,
+    private userService: UserService
   ) { }
 
 
@@ -56,9 +58,14 @@ export class DashboardComponent implements OnInit {
   
   ngOnInit(): void {
 
-    this.crudService.GetBooks().subscribe(res => {
+    // this.crudService.GetBooks().subscribe(res => {
+    //   console.log(res)
+    //   this.Books =res;
+    // });  
+
+    this.userService.GetUsers().subscribe(res => {
       console.log(res)
-      this.Books =res;
+      this.Users =res;
     });  
 
     this.main();
