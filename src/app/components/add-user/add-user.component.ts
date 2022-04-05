@@ -97,7 +97,7 @@ export class AddUserComponent implements OnInit {
       }
     }).catch(console.error);
 
-    // this.userId = 'U4a20ad686ba7827c293b71dc77930331';
+    this.userId = this.profile.userId;
     this.userService.login(this.userId);
    
   }
