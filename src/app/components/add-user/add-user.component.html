@@ -1,9 +1,12 @@
 
-<img #picutreUrl style="height: 80px; width: 80px;" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="{{profile.pictureUrl}}" />
-
 <div class="container">
 
-    <div class="row justify-content-center mt-5">
+    <div class="text-center">
+      <img  style="height: 80px; width: 80px;" class="p-0 my-5 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="{{profile.pictureUrl}}" />
+    </div>
+
+    <div class="row justify-content-center ">
+      
       <div class="col-md-4">
           <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
