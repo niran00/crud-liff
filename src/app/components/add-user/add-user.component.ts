@@ -81,7 +81,7 @@ export class AddUserComponent implements OnInit {
             userName: [''],
             userPhoneNumber: ['']
           });
-          
+
           this.userService.login(this.theId);
 
         }).catch(console.error);
@@ -106,7 +106,7 @@ export class AddUserComponent implements OnInit {
     this.userService.AddUser(this.userForm.value)
     .subscribe(() => {
         console.log('Data added successfully!')
-        this.ngZone.run(() => this.router.navigateByUrl('/users-list'))
+        this.ngZone.run(() => this.router.navigateByUrl('/otp'))
       }, (err) => {
         console.log(err);
     });
