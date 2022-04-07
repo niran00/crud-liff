@@ -93,9 +93,9 @@ export class AddUserComponent implements OnInit {
 
           this.userService.login(this.theId);
           if(!this.userIsAuthenicated){
-            alert("logged in");
+            alert(this.userIsAuthenicated);
           } else {
-            alert("logged in failed");
+            alert("logged in failed" + this.userIsAuthenicated);
           }
 
         }).catch(console.error);
