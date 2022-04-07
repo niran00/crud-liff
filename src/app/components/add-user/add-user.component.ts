@@ -8,6 +8,7 @@ import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
 
 
+
 type UnPromise<T> = T extends Promise<infer X>? X : T;
 
 @Component({
@@ -94,13 +95,17 @@ export class AddUserComponent implements OnInit {
   }
  
   onSubmit(): any {
-    this.userService.AddUser(this.userForm.value)
-    .subscribe(() => {
-        console.log('Data added successfully!')
-        this.ngZone.run(() => this.router.navigateByUrl('/otp'))
-      }, (err) => {
-        console.log(err);
-    });
+    if(!this.userForm.valid){
+      return;
+    } else {
+      this.userService.AddUser(this.userForm.value)
+      .subscribe(() => {
+          console.log('Data added successfully!')
+          this.ngZone.run(() => this.router.navigateByUrl('/otp'))
+        }, (err) => {
+          console.log(err);
+      });
+    }
   }
 
 }
