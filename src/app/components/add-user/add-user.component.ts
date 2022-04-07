@@ -90,7 +90,16 @@ export class AddUserComponent implements OnInit {
 
           this.userService.login(this.theId);
 
-         
+          this.authListenerSubs = this.userService.getAuthStatusListener()
+          .subscribe(isAuthenicated => {
+            this.userIsAuthenicated = isAuthenicated;
+          })
+
+          if(!this.userIsAuthenicated){
+            alert(this.userIsAuthenicated);
+          } else {
+            alert("logged in failed" + this.userIsAuthenicated);
+          }
 
         }).catch(console.error);
       }else{
@@ -98,16 +107,9 @@ export class AddUserComponent implements OnInit {
       }
     }).catch(console.error);
 
-    this.authListenerSubs = this.userService.getAuthStatusListener()
-    .subscribe(isAuthenicated => {
-      this.userIsAuthenicated = isAuthenicated;
-    })
+   
 
-     if(!this.userIsAuthenicated){
-            alert(this.userIsAuthenicated);
-          } else {
-            alert("logged in failed" + this.userIsAuthenicated);
-          }
+     
    
   }
  
