@@ -14,11 +14,13 @@ export class BooksListComponent implements OnInit, OnDestroy {
   Books:any = [];
 
   userIsAuthenicated = false;
+  tokenUserId : string; 
   private authStatusSub : Subscription;
  
   constructor(private crudService: CrudService, private userService: UserService ) { }
  
   ngOnInit(): void {
+    this.tokenUserId = this.userService.getTokenUserId();
     this.crudService.GetBooks().subscribe(res => {
       console.log(res)
       this.Books =res;
@@ -29,6 +31,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
     .getAuthStatusListener()
     .subscribe(isAuthenticated => {
       this.userIsAuthenicated = isAuthenticated;
+      this.tokenUserId = this.userService.getTokenUserId();
     });
     
   }

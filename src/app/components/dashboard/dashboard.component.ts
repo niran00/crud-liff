@@ -4,6 +4,7 @@ import * as liffApi from '@liff/is-api-available';
 import { Router } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
 import { UserService } from './../../service/user.service';
+import { Subscription } from 'rxjs';
 
 type UnPromise<T> = T extends Promise<infer X>? X : T;
 
@@ -16,6 +17,9 @@ type UnPromise<T> = T extends Promise<infer X>? X : T;
 export class DashboardComponent implements OnInit {
 
     Users:any = [];
+    userIsAuthenicated = false;
+    tokenUserId : string; 
+    private authStatusSub : Subscription;
 
   constructor(
     private router: Router,
@@ -68,7 +72,21 @@ export class DashboardComponent implements OnInit {
       this.Users =res;
     });  
 
+    this.userIsAuthenicated = this.userService.getIsAuth(); 
+
+    this.authStatusSub = this.userService
+    .getAuthStatusListener()
+    .subscribe(isAuthenticated => {
+      this.userIsAuthenicated = isAuthenticated;
+      this.tokenUserId = this.userService.getTokenUserId();
+    });
+
     this.main();
     this.getUserProfile();
   }  
+
+  ngOnDestroy(): void {
+    this.authStatusSub.unsubscribe(); 
+  }
+  
 }

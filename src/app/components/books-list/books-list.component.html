@@ -24,7 +24,7 @@
         <thead>
           <tr>
             <th scope="col">Id</th>
-            <th scope="col">Name</th>
+            <th scope="col">Creator</th>
             <th scope="col">Phone Number</th>
             <!-- <th scope="col">Description</th> -->
             <th class="text-center" scope="col">Action</th>
@@ -32,9 +32,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let book of Books; let i = index; let last = last; ">
-              <ng-container >
+              <ng-container *ngIf=" tokenUserId == book.creator" >
                 <th scope="row">{{book._id}}</th>
-                <td>{{book.name}}</td>
+                <td>{{book.creator}}</td>
                 <td>{{book.price}}</td>
                 <!-- <td>{{book.description}}</td> -->
                 <td class="text-center">

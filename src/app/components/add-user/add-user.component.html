@@ -1,9 +1,9 @@
 
 <div class="container">
-
+<!-- 
     <div class="text-center">
-      <img  style="height: 80px; width: 80px;" class="p-0 my-5 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="{{profile.pictureUrl}}" />
-    </div>
+      <img  style="height: 80px; width: 80px;" class="p-0 my-5 border-0 img-thumbnail rounded-circle mx-auto" src="{{profile.pictureUrl}}" />
+    </div> -->
 
     <div class="row justify-content-center ">
       
@@ -11,7 +11,7 @@
           <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
           <div class="form-group">
-            <input  #userId id="userId" class="form-control" hidden type="text" formControlName="userId" required>
+            <input  #userId id="userId" class="form-control"  type="text" formControlName="userId" required>
           </div>
 
 

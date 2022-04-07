@@ -24,7 +24,8 @@ export class UserService {
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   private token : string ;
-  private isAuthenticated = false
+  private isAuthenticated = false;
+  private tokenUserId : string; 
   private authStatusListener = new Subject<boolean>(); 
   
   getToken(){
@@ -39,11 +40,15 @@ export class UserService {
     return this.authStatusListener.asObservable();
   }
 
+  getTokenUserId(){
+    return this.tokenUserId;
+  }
+
   //Login
   login(userId: any) {
     const authData : any = {userId: userId}
     let API_URL = `${this.REST_API}/login`;
-    return this.httpClient.post<{token : string }>(API_URL , authData)
+    return this.httpClient.post<{token : string , tokenUserId: string }>(API_URL , authData)
     .subscribe(response => {
       console.log(response); 
       const token = response.token ;
@@ -51,6 +56,7 @@ export class UserService {
       if(token){
         this.isAuthenticated = true;
         this.authStatusListener.next(true);
+        this.tokenUserId = response.tokenUserId;
       }
       this.router.navigate(['/dashboard']);
     })
@@ -62,6 +68,7 @@ export class UserService {
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     this.router.navigate(['/login']);
+    this.tokenUserId = null;
   }
 
 
