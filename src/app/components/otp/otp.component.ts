@@ -1,8 +1,12 @@
 import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './../../service/user.service';
+
+
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
+
+type UnPromise<T> = T extends Promise<infer X>? X : T;
 
 
 @Component({
@@ -12,6 +16,9 @@ import * as liffApi from '@liff/is-api-available';
 })
 export class OtpComponent implements OnInit {
 
+  os: ReturnType<typeof liff.getOS>;  
+  profile: UnPromise<ReturnType<typeof liff.getProfile>>;
+ 
   
   constructor(
     private router: Router,
@@ -54,8 +61,18 @@ export class OtpComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.main();
-    this.getUserProfile(); 
+    liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
+      this.os = liff.getOS();
+      if(liff.isLoggedIn()){
+        liff.getProfile().then( profile =>{
+
+          alert(this.theId);
+
+        }).catch(console.error);
+      }else{
+        // liff.login();
+      }
+    }).catch(console.error);
   }
 
 }
