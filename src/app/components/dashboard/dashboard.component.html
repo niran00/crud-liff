@@ -1,0 +1,24 @@
+
+
+<section #profile class="text-center pt-5" id="profile">
+    <img #picutreUrl style="height: 80px; width: 80px;" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
+  
+      <div class="container pt-3">
+        
+
+        <p #userId id="userId"></p>
+        <div *ngFor="let user of Users; let i = index; let last = last; ">
+          <ng-container *ngIf="tokenUserId == user.creator" >
+            <p><strong>Name: </strong>{{user.userName}}</p>
+            <p><strong>Phone Number: </strong> {{user.userPhoneNumber}}</p>
+          </ng-container>
+        </div>
+        <p #displayName id="displayName"></p>
+        <p #statusMessage id="statusMessage"></p>
+        <p #email id="email"></p>
+    
+      </div>
+
+  
+</section>
+
