@@ -84,6 +84,11 @@ export class AddUserComponent implements OnInit {
           });
 
           this.userService.login(this.theId);
+          if(this.userService.login){
+            alert("logged in");
+          } else {
+            alert("logged in failed");
+          }
 
         }).catch(console.error);
       }else{
