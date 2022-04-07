@@ -8,7 +8,7 @@
 
         <p #userId id="userId"></p>
         <div *ngFor="let user of Users; let i = index; let last = last; ">
-          <ng-container *ngIf="tokenUserId == user.creator" >
+          <ng-container *ngIf=" tokenUserId == user.creator" >
             <p><strong>Name: </strong>{{user.userName}}</p>
             <p><strong>Phone Number: </strong> {{user.userPhoneNumber}}</p>
           </ng-container>
