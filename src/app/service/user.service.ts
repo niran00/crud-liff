@@ -58,7 +58,7 @@ export class UserService {
         this.authStatusListener.next(true);
         this.tokenUserId = response.tokenUserId;
       }
-      this.router.navigate(['/dashboard']);
+      // this.router.navigate(['/dashboard']);
     })
   }
 
