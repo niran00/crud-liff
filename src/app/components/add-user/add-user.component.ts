@@ -90,16 +90,7 @@ export class AddUserComponent implements OnInit {
 
           this.userService.login(this.theId);
 
-          this.authListenerSubs = this.userService.getAuthStatusListener()
-          .subscribe(isAuthenicated => {
-            this.userIsAuthenicated = isAuthenicated;
-          })
-
-          if(!this.userIsAuthenicated){
-            alert(this.userIsAuthenicated);
-          } else {
-            alert("logged in failed" + this.userIsAuthenicated);
-          }
+         
 
         }).catch(console.error);
       }else{
@@ -108,7 +99,16 @@ export class AddUserComponent implements OnInit {
     }).catch(console.error);
 
    
+    // this.authListenerSubs = this.userService.getAuthStatusListener()
+    // .subscribe(isAuthenicated => {
+    //   this.userIsAuthenicated = isAuthenicated;
+    // })
 
+    // if(!this.userIsAuthenicated){
+    //   alert(this.userIsAuthenicated);
+    // } else {
+    //   alert("logged in failed" + this.userIsAuthenicated);
+    // }
      
    
   }
@@ -121,7 +121,7 @@ export class AddUserComponent implements OnInit {
       .subscribe(() => {
           console.log('Data added successfully!')
           this.userService.login(this.theId);
-          this.ngZone.run(() => this.router.navigateByUrl('/otp'));
+          this.router.navigateByUrl('/otp');
         }, (err) => {
           console.log(err);
       });
