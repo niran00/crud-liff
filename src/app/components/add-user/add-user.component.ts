@@ -87,15 +87,6 @@ export class AddUserComponent implements OnInit {
         }).catch(console.error);
       }else{
         // liff.login();
-
-
-
-        this.userForm = this.formBuilder.group({
-          userId: ["wein"],
-          userName: [''],
-          userPhoneNumber: ['']
-        });
-
       }
     }).catch(console.error);
 
