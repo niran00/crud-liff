@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
 
   constructor( public userService: UserService) { }
 
+  dashboardLink : any = 'dashboard';
+
   ngOnInit(): void {
   }
 
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
     if(form.invalid){
       return;
     }
-    this.userService.login(form.value.userId);
+    this.userService.login(form.value.userId, this.dashboardLink);
   }
 
 }

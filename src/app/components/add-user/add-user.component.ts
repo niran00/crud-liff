@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/service/user.service';
-import { Subscription } from 'rxjs';
 
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
@@ -50,8 +49,8 @@ export class AddUserComponent implements OnInit {
   }
 
   theId : any = '';
-  userIsAuthenicated = false;
-  private authListenerSubs : Subscription;
+  dashboardLink : string = '';
+  otpLink : string = 'otp';
 
   userForm: FormGroup;
    
@@ -71,8 +70,6 @@ export class AddUserComponent implements OnInit {
 
 
    ngOnInit() {
-
-    
    
     liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
       this.os = liff.getOS();
@@ -80,7 +77,8 @@ export class AddUserComponent implements OnInit {
         liff.getProfile().then( profile =>{
           this.profile = profile;
          
-           this.theId = this.profile.userId;  
+           this.theId = this.profile.userId;
+           this.dashboardLink = "dashboard";
 
            this.userForm = this.formBuilder.group({
             userId: [this.profile.userId],
@@ -88,9 +86,7 @@ export class AddUserComponent implements OnInit {
             userPhoneNumber: ['']
           });
 
-          this.userService.login(this.theId);
-
-         
+          this.userService.login(this.theId, this.dashboardLink);
 
         }).catch(console.error);
       }else{
@@ -98,18 +94,6 @@ export class AddUserComponent implements OnInit {
       }
     }).catch(console.error);
 
-   
-    // this.authListenerSubs = this.userService.getAuthStatusListener()
-    // .subscribe(isAuthenicated => {
-    //   this.userIsAuthenicated = isAuthenicated;
-    // })
-
-    // if(!this.userIsAuthenicated){
-    //   alert(this.userIsAuthenicated);
-    // } else {
-    //   alert("logged in failed" + this.userIsAuthenicated);
-    // }
-     
    
   }
  
@@ -120,8 +104,8 @@ export class AddUserComponent implements OnInit {
       this.userService.AddUser(this.userForm.value)
       .subscribe(() => {
           console.log('Data added successfully!')
-          this.userService.login(this.theId);
-          this.router.navigateByUrl('/otp');
+          this.ngZone.run(() => this.router.navigateByUrl('/otp'));
+          this.userService.login(this.theId, this.otpLink);
         }, (err) => {
           console.log(err);
       });

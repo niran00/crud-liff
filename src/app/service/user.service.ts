@@ -45,7 +45,7 @@ export class UserService {
   }
 
   //Login
-  login(userId: any) {
+  login(userId: any, reRoute: any) {
     const authData : any = {userId: userId}
     let API_URL = `${this.REST_API}/login`;
     return this.httpClient.post<{token : string , tokenUserId: string }>(API_URL , authData)
@@ -58,7 +58,7 @@ export class UserService {
         this.authStatusListener.next(true);
         this.tokenUserId = response.tokenUserId;
       }
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/' + reRoute]);
     })
   }
 
