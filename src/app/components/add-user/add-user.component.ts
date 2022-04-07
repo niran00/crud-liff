@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/service/user.service';
+import { Subscription } from 'rxjs';
 
 import liff from '@line/liff';
 import * as liffApi from '@liff/is-api-available';
@@ -49,6 +50,8 @@ export class AddUserComponent implements OnInit {
   }
 
   theId : any = '';
+  userIsAuthenicated = false;
+  private authListenerSubs : Subscription;
 
   userForm: FormGroup;
    
@@ -68,6 +71,11 @@ export class AddUserComponent implements OnInit {
 
 
    ngOnInit() {
+
+    this.authListenerSubs = this.userService.getAuthStatusListener()
+    .subscribe(isAuthenicated => {
+      this.userIsAuthenicated = isAuthenicated;
+    })
    
     liff.init({liffId:'1656955187-j6JWxVQG'}).then(()=>{
       this.os = liff.getOS();
@@ -84,7 +92,7 @@ export class AddUserComponent implements OnInit {
           });
 
           this.userService.login(this.theId);
-          if(this.userService.login){
+          if(!this.userIsAuthenicated){
             alert("logged in");
           } else {
             alert("logged in failed");
