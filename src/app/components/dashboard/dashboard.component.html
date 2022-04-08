@@ -2,18 +2,20 @@
 
 <section #profile class="text-center pt-5" id="profile">
     <img #picutreUrl style="height: 80px; width: 80px;" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
-  
-      <div class="container pt-3">
+
+    <div *ngFor="let user of Users; let i = index; ">
+      <ng-container *ngIf="tokenUserId == user.userId">
+        <button class="btn btn-sm btn-primary" routerLink="/edit-user/{{user._id}}">Edit</button>
+      </ng-container>
+    </div>
+    
+      <div class="container text-start pt-3">
 
        
 
         <p #userId id="userId"></p>
 
-        <div *ngFor="let user of Users; let i = index; ">
-          <ng-container *ngIf="tokenUserId == user.userId">
-            <button class="btn btn-sm btn-primary" routerLink="/edit-user/{{user._id}}">Edit</button>
-          </ng-container>
-        </div>
+      
 
         <div *ngFor="let user of Users; let i = index; let last = last; ">
 
