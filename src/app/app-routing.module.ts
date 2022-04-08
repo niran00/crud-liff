@@ -10,6 +10,7 @@ import { OtpComponent } from './components/otp/otp.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './service/auth.guard';
 
@@ -46,6 +47,11 @@ const routes: Routes = [
   { 
     path: 'edit-book/:id', 
     component: BookDetailComponent,
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: 'edit-user/:id', 
+    component: UserDetailComponent,
     canActivate: [AuthGuard] 
   },
   { 

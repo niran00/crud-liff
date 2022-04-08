@@ -24,6 +24,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './service/auth-interceptor';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 
 @NgModule({
@@ -39,6 +40,8 @@ import { AuthInterceptor } from './service/auth-interceptor';
     AddUserComponent,
     UsersListComponent,
     LoginComponent,
+    UserDetailComponent,
+
   ],
   imports: [
     BrowserModule,
