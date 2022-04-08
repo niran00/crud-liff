@@ -18,19 +18,19 @@
           </div>
 
 
-          <mat-form-field class="w-100 example-full-width" appearance="fill">
-            <mat-label>User Name</mat-label>
+          <mat-form-field MatFormField Control class="w-100 example-full-width" appearance="fill">
+            <mat-label>ชื่อนามสกุล</mat-label>
             <input matInput type="text" formControlName="userName" required>
           </mat-form-field>
         
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>User Phone Number</mat-label>
+          <mat-form-field MatFormFieldControl class="w-100" appearance="fill">
+            <mat-label>หมายเลขโทรศัพท์</mat-label>
             <input matInput type="tel" minlength="9" maxlength="9" formControlName="userPhoneNumber" required>
           </mat-form-field>
      
      
             <div class="form-group">
-              <button  mat-raised-button  class="w-100"   color="primary" type="submit">Add User</button>
+              <button  mat-raised-button  class="w-100"   color="primary" type="submit">สมัคร</button>
             </div>
 
             
