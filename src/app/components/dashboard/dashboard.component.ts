@@ -17,6 +17,7 @@ type UnPromise<T> = T extends Promise<infer X>? X : T;
 export class DashboardComponent implements OnInit {
 
     Users:any = [];
+   
     userIsAuthenicated = false;
     tokenUserId : string; 
     private authStatusSub : Subscription;
@@ -62,10 +63,13 @@ export class DashboardComponent implements OnInit {
   
   ngOnInit(): void {
 
+     
     // this.crudService.GetBooks().subscribe(res => {
     //   console.log(res)
     //   this.Books =res;
     // });  
+
+    this.tokenUserId = this.userService.getTokenUserId();
 
     this.userService.GetUsers().subscribe(res => {
       console.log(res)

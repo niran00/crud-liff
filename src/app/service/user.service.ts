@@ -14,7 +14,7 @@ export class UserService {
 
 
   // Node/Express API
-  REST_API: string = 'https://afternoon-brook-66471.herokuapp.com/api';
+  REST_API: string = 'http://localhost:8000/api';
  
   // Http Header
   // httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');

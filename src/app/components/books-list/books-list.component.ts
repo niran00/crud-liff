@@ -20,6 +20,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
   constructor(private crudService: CrudService, private userService: UserService ) { }
  
   ngOnInit(): void {
+    
     this.tokenUserId = this.userService.getTokenUserId();
     this.crudService.GetBooks().subscribe(res => {
       console.log(res)
