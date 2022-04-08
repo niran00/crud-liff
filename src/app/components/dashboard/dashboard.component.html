@@ -10,13 +10,6 @@
     </div>
     
       <div class="container text-start pt-3">
-
-       
-
-        <p #userId id="userId"></p>
-
-      
-
         <div *ngFor="let user of Users; let i = index; let last = last; ">
 
          
@@ -24,11 +17,11 @@
           <ng-container *ngIf=" tokenUserId == user.userId">
             <p><strong>Name: </strong>{{user.userName}}</p>
             <p><strong>Phone Number: </strong> {{user.userPhoneNumber}}</p>
+            <p #email id="email"></p>
           </ng-container>
         </div>
-        <p #displayName id="displayName"></p>
-        <p #statusMessage id="statusMessage"></p>
-        <p #email id="email"></p>
+        <!-- <p #displayName id="displayName"></p> -->
+      
     
       </div>
 
