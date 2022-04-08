@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
   async getUserProfile() {
     const profile = await liff.getProfile();
     this.picutreUrl.nativeElement.src = profile.pictureUrl;
-    this.userId.nativeElement.innerHTML = '<b>UserID:</b>' + profile.userId;
+    // this.userId.nativeElement.innerHTML = '<b>UserID:</b>' + profile.userId;
     // this.displayName.nativeElement.innerHTML = '<b>ชื่อในไลน์: </b>' + profile.displayName;
     this.email.nativeElement.innerHTML = "<b>อีเมล : </b>" + liff.getDecodedIDToken()?.email;
   }
