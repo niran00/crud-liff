@@ -49,6 +49,7 @@ export class AddUserComponent implements OnInit {
   }
 
   theId : any = '';
+  theEmail: string = '';
   dashboardLink : string = '';
   otpLink : string = 'otp';
 
@@ -78,10 +79,12 @@ export class AddUserComponent implements OnInit {
           this.profile = profile;
          
            this.theId = this.profile.userId;
+           this.theEmail = liff.getDecodedIDToken()?.email;
            this.dashboardLink = "dashboard";
 
            this.userForm = this.formBuilder.group({
             userId: [this.profile.userId],
+            userEmail: [this.theEmail],
             userName: [''],
             userPhoneNumber: ['']
           });
