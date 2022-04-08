@@ -1,28 +1,31 @@
-<div class="row justify-content-center mt-5">
-    <div class="col-md-4">
-      <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+<div class="container h-100 my-auto">
 
 
-        <mat-form-field>
-          <input hidden type="text" formControlName="userId" required>
-        </mat-form-field>
-
-          <mat-form-field class="w-100 example-full-width" appearance="fill">
-            <mat-label>User Name</mat-label>
-            <input matInput type="text" type="text" formControlName="userName" required>
-          </mat-form-field>
-        
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>User Phone Number</mat-label>
-            <input matInput type="number" minlength="10" maxlength="10" formControlName="userPhoneNumber" required>
-          </mat-form-field>
      
-   
-        <div class="form-group">
-          <button  mat-raised-button   class="w-100" color="primary" type="submit">Update</button>
-        </div>
-
-
-      </form>
-    </div>
+  <div class="d-flex my-5 align-items-center justify-content-center">
+    <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+      
+      <input hidden formControlName="userId" required>
+    
+  
+      <mat-form-field class="w-100" MatFormFieldControl appearance="fill">
+        <input matInput formControlName="userName" placeholder="ชื่อนามสกุล" required>
+      </mat-form-field>
+    
+       <mat-form-field class="w-100" MatFormFieldControl appearance="fill">
+         <input matInput type="number" ngModel minlength="10" maxlength="10" formControlName="userPhoneNumber" placeholder="หมายเลขโทรศัพท์" required>
+       </mat-form-field>
+  
+  
+       <div class="form-group">
+         <button  mat-raised-button   class="w-100" color="primary" type="submit">Update</button>
+       </div>
+  
+     </form>
   </div>
+ 
+
+
+  
+
+</div>
