@@ -4,6 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Observable, Subject, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import liff from '@line/liff/dist/lib';
  
 
 @Injectable({
@@ -69,6 +70,11 @@ export class UserService {
     this.authStatusListener.next(false);
     this.router.navigate(['/login']);
     this.tokenUserId = null;
+
+    if (liff.isLoggedIn()) {
+      liff.logout();
+      liff.closeWindow();
+    }
   }
 
 
