@@ -64,8 +64,10 @@ export class AddUserComponent implements OnInit {
   ) { 
     this.userForm = this.formBuilder.group({
       userId: [''],
+      userEmail: [''],
       userName: [''],
-      userPhoneNumber: ['']
+      userPhoneNumber: [''],
+      userOtpToken: ['']
     });
   }
  
@@ -88,6 +90,7 @@ export class AddUserComponent implements OnInit {
             userEmail: [this.theEmail],
             userName: [''],
             userPhoneNumber: ['']
+           
           });
 
           this.userService.login(this.theId, this.dashboardLink);
@@ -95,6 +98,13 @@ export class AddUserComponent implements OnInit {
         }).catch(console.error);
       }else{
         // liff.login();
+        this.userForm = this.formBuilder.group({
+          userId: ['123123'],
+          userEmail: ['this.theEmail'],
+          userName: [''],
+          userPhoneNumber: [''],
+          userOtpToken: ['']
+        });
       }
     }).catch(console.error);
 
