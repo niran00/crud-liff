@@ -99,11 +99,11 @@ export class AddUserComponent implements OnInit {
       }else{
         // liff.login();
         this.userForm = this.formBuilder.group({
-          userId: ['123123'],
-          userEmail: ['this.theEmail'],
+          userId: [this.theId],
+          userEmail: [this.theEmail],
           userName: [''],
           userPhoneNumber: [''],
-          userOtpToken: ['']
+          userOtpToken: ['unverifed']
         });
       }
     }).catch(console.error);

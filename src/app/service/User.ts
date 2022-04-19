@@ -3,4 +3,5 @@ export class User {
     userId!: String;
     userName!: String;
     userPhoneNumber!: String;
+    userOtpToken!: String;
 }

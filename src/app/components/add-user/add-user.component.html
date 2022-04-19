@@ -27,6 +27,11 @@
             <mat-label>หมายเลขโทรศัพท์</mat-label>
             <input matInput type="tel" minlength="10" maxlength="10" formControlName="userPhoneNumber" required>
           </mat-form-field>
+
+
+          <div class="form-group">
+            <input #userOtpToken type="text" class="form-control" hidden  formControlName="userOtpToken" >
+          </div>
      
      
             <div class="form-group">
