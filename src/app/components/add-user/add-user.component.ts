@@ -89,8 +89,8 @@ export class AddUserComponent implements OnInit {
             userId: [this.profile.userId],
             userEmail: [this.theEmail],
             userName: [''],
-            userPhoneNumber: ['unverifed']
-           
+            userPhoneNumber: [''],
+            userOtpToken: ['unverifed']
           });
 
           this.userService.login(this.theId, this.dashboardLink);
