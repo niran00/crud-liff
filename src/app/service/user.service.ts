@@ -81,10 +81,19 @@ export class UserService {
   // Add
   AddUser(data: User): Observable<any> {
     let API_URL = `${this.REST_API}/add-user`;
-    return this.httpClient.post(API_URL, data)
+    return this.httpClient.post(API_URL, data,)
       .pipe(
         catchError(this.handleError)
       )
+  }
+
+  userOtp(userOtpToken : string){
+    let API_URL = `${this.REST_API}/add-user`;
+    return this.httpClient.post(API_URL, userOtpToken).subscribe(response => {
+      const theResOtp = response; 
+      console.log(theResOtp);
+      return theResOtp; 
+    })
   }
  
   // Get all objects

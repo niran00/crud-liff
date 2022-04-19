@@ -89,7 +89,7 @@ export class AddUserComponent implements OnInit {
             userId: [this.profile.userId],
             userEmail: [this.theEmail],
             userName: [''],
-            userPhoneNumber: ['']
+            userPhoneNumber: ['unverifed']
            
           });
 
