@@ -45,7 +45,7 @@ export class AddUserComponent implements OnInit {
 
   theId: any = ''
   theEmail: string = ''
-  dashboardLink: string = ''
+  dashboardLink: string = 'dashboard'
   otpLink: string = 'otp'
 
   setName: string = ''
@@ -143,15 +143,15 @@ export class AddUserComponent implements OnInit {
       // console.log(this.setName + ' ' + this.setNumber + ' ' + this.setToken)
       // console.log(this.userForm)
       // console.log(this.otpForm)
-      ;(await this.userService.addUser(this.userForm.value, this.otpForm.value, this.setToken)).subscribe(
+      await this.userService.addUser(this.userForm.value, this.otpForm.value, this.setToken).then(
         () => {
           console.log('Data added successfully!')
           this.ngZone.run(() => this.router.navigateByUrl('/otp'))
-          this.userService.login(this.theId, this.otpLink)
-          this.userService.myOtp(this.userForm.value.userPhoneNumber)
+          this.userService.login(this.theId, this.dashboardLink)
         },
         (err) => {
           console.log(err)
+          console.log('nope')
         }
       )
     }
