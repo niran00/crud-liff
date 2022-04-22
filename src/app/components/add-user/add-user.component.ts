@@ -143,9 +143,10 @@ export class AddUserComponent implements OnInit {
       // console.log(this.setName + ' ' + this.setNumber + ' ' + this.setToken)
       // console.log(this.userForm)
       // console.log(this.otpForm)
-      await this.userService.addUser(this.userForm.value, this.otpForm.value, this.setToken).then(
+      ;(await this.userService.addUser(this.userForm.value, this.otpForm.value, this.setToken)).subscribe(
         () => {
           console.log('Data added successfully!')
+          this.ngZone.run(() => this.router.navigateByUrl('/otp'))
           this.userService.login(this.theId, this.dashboardLink)
         },
         (err) => {
