@@ -11,7 +11,7 @@ import liff from '@line/liff/dist/lib'
 })
 export class UserService {
   // Node/Express API
-  REST_API: string = 'https://afternoon-brook-66471.herokuapp.com/api'
+  REST_API: string = 'http://localhost:8000/api'
 
   // Http Header
   // httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -107,10 +107,10 @@ export class UserService {
   }
 
   // Add
-  async addUser(data: User, otp: OtpPin, token: string) {
+  async addUser(data: User, otp: OtpPin, token: string): Promise<Observable<any>> {
     let neededData = [data, otp.otpConfirm, token]
     let API_URL = `${this.REST_API}/add-user`
-    return this.httpClient.post(API_URL, neededData).pipe(catchError(this.handleError))
+    return this.httpClient.post(API_URL, neededData, { headers: this.httpHeaders }).pipe(catchError(this.handleError))
   }
 
   //OTP
