@@ -89,10 +89,11 @@ export class UserService {
     const authData: any = { userPhoneNumber: userPhoneNumber }
     let API_URL = `${this.REST_API}/verify`
 
-    let data = this.httpClient.post<{ otpTok: string; otpPin: string }>(API_URL, authData, { headers: this.httpHeaders })
+    let data = this.httpClient.post<{ otpTok: string; otpPin: string }>(API_URL, authData)
     const otpToken = await lastValueFrom(data)
     this.otpToken = otpToken.otpTok
     this.otpPin = otpToken.otpPin
+    return data
     // console.log('otpToken', otpToken.otpTok);
 
     // this.otpToken = await new Promise((resolve, reject) => {
@@ -107,7 +108,7 @@ export class UserService {
   }
 
   // Add
-  async addUser(data: User, otp: OtpPin, token: string) {
+  async addUser(data: User, otp: OtpPin, token: string): Promise<Observable<any>> {
     let neededPin = otp.otpConfirm
     let neededData = [data, neededPin, token]
     let API_URL = `${this.REST_API}/add-user`
