@@ -85,11 +85,11 @@ export class UserService {
   }
 
   //OTP
-  async myOtp(userPhoneNumber?: any) {
+  async myOtp(userPhoneNumber?: any): Promise<Observable<any>> {
     const authData: any = { userPhoneNumber: userPhoneNumber }
     let API_URL = `${this.REST_API}/verify`
 
-    let data = this.httpClient.post<{ otpTok: string; otpPin: string }>(API_URL, authData)
+    let data = this.httpClient.post<{ otpTok: string; otpPin: string }>(API_URL, authData, { headers: this.httpHeaders })
     const otpToken = await lastValueFrom(data)
     this.otpToken = otpToken.otpTok
     this.otpPin = otpToken.otpPin
