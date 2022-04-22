@@ -107,7 +107,7 @@ export class UserService {
   }
 
   // Add
-  async addUser(data: User, otp: OtpPin, token: string): Promise<Observable<any>> {
+  async addUser(data: User, otp: OtpPin, token: string) {
     let neededPin = otp.otpConfirm
     let neededData = [data, neededPin, token]
     let API_URL = `${this.REST_API}/add-user`
