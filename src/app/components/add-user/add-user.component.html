@@ -18,11 +18,11 @@
           <input matInput type="text" formControlName="userName" required />
         </mat-form-field>
 
-        <mat-form-field MatFormFieldControl class="w-100" appearance="fill">
+        <mat-form-field MatFormFieldControl class="p-0 w-100" appearance="fill">
           <mat-label>หมายเลขโทรศัพท์</mat-label>
-          <input matInput type="tel" minlength="10" maxlength="10" formControlName="userPhoneNumber" required />
+          <input matInput class="p-0" type="tel" minlength="10" maxlength="10" formControlName="userPhoneNumber" required />
         </mat-form-field>
-
+        <small id="phoneError" class="text-danger" #phoneError> เบอร์โทรศัพท์อยู่ในระบบแล้ว </small>
         <div class="form-group">
           <input #userOtpToken type="text" class="form-control" hidden formControlName="userOtpToken" />
         </div>

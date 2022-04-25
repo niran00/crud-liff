@@ -20,6 +20,7 @@ export class AddUserComponent implements OnInit {
 
   @ViewChild('userId') userId: ElementRef | any
   @ViewChild('otpform') otpform: ElementRef | any
+  @ViewChild('phoneError') phoneError: ElementRef | any
   @ViewChild('signupForm') signupForm: ElementRef | any
 
   async main() {
@@ -114,9 +115,6 @@ export class AddUserComponent implements OnInit {
     if (!this.userForm.valid) {
       return
     } else {
-      this.otpform.nativeElement.style.display = 'block'
-      this.signupForm.nativeElement.style.display = 'none'
-
       this.setName = this.userForm.value.userName
       this.setNumber = this.userForm.value.userPhoneNumber
       await this.userService.myOtp(this.userForm.value.userPhoneNumber)
@@ -124,6 +122,16 @@ export class AddUserComponent implements OnInit {
       this.setPin = this.userService.getOtpPin()
       // this.setToken = this.userService.myOtp();
       console.log('test agian' + ' ' + this.setToken + ' ' + this.setPin)
+
+      if (this.setToken === 'none') {
+        console.log('number already used')
+        this.phoneError.nativeElement.style.display = 'block'
+      } else {
+        this.otpform.nativeElement.style.display = 'block'
+        this.signupForm.nativeElement.style.display = 'none'
+        this.phoneError.nativeElement.style.display = 'none'
+      }
+
       // this.userService.AddUser(this.userForm.value)
       // .subscribe(() => {
       //     console.log('Data added successfully!')
