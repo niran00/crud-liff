@@ -80,7 +80,7 @@ export class AddUserComponent implements OnInit {
         if (liff.isLoggedIn()) {
           liff
             .getProfile()
-            .then((profile) => {
+            .then(async (profile) => {
               this.profile = profile
 
               this.theId = this.profile.userId
@@ -95,7 +95,7 @@ export class AddUserComponent implements OnInit {
                 userOtpToken: ['unverifed'],
               })
 
-              this.userService.login(this.theId, this.dashboardLink)
+              await this.userService.login(this.theId, this.dashboardLink)
               this.isLoading = true;
             })
             .catch(console.error)
