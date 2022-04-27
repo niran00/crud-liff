@@ -96,9 +96,10 @@ export class AddUserComponent implements OnInit {
               })
 
               this.userService.login(this.theId, this.dashboardLink)
+              this.isLoading = true;
             })
             .catch(console.error)
-          this.isLoading = true;
+
         } else {
           // liff.login();
           this.userForm = this.formBuilder.group({
@@ -108,7 +109,7 @@ export class AddUserComponent implements OnInit {
             userPhoneNumber: [''],
             userOtpToken: ['unverifed'],
           })
-          this.isLoading = true;
+          this.isLoading = false;
         }
       })
       .catch(console.error)
