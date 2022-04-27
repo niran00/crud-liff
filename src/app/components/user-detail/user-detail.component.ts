@@ -49,7 +49,7 @@ export class UserDetailComponent implements OnInit {
   async onUpdate(): Promise<any> {
     let newval = this.updateForm.controls['userPhoneNumber'].value
     if (newval == this.defvalue) {
-      alert('value unchanged')
+
 
       this.userService.updateUser(this.getId, this.updateForm.value).subscribe(
         () => {
@@ -62,13 +62,30 @@ export class UserDetailComponent implements OnInit {
       )
       console.log(this.updateForm.value + ' ' + this.resetToken + ' ' + this.resetPin)
     } else {
+
+
+
       await this.userService.newOtp(this.updateForm.value.userPhoneNumber)
       this.resetToken = this.userService.resetOtpToken()
       this.resetPin = this.userService.resetOtpPin()
-      this.otpform.nativeElement.style.display = 'block'
-      this.userupdateForm.nativeElement.style.display = 'none'
+      // this.otpform.nativeElement.style.display = 'block'
+      // this.userupdateForm.nativeElement.style.display = 'none'
       console.log('test agian' + ' ' + this.resetToken + ' ' + this.resetPin)
+
+      if (this.resetToken === 'none') {
+        console.log('number already used')
+        this.phoneError.nativeElement.style.display = 'block'
+      } else {
+        this.otpform.nativeElement.style.display = 'block'
+        this.userupdateForm.nativeElement.style.display = 'none'
+        this.phoneError.nativeElement.style.display = 'none'
+      }
+
+
     }
+
+
+
   }
 
   async otpSubmit() {

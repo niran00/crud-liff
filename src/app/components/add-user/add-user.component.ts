@@ -64,7 +64,7 @@ export class AddUserComponent implements OnInit {
       userEmail: [''],
       userName: [''],
       userPhoneNumber: [''],
-      userOtpToken: [''],
+
     })
 
     this.otpForm = this.formBuilder.group({
@@ -92,7 +92,7 @@ export class AddUserComponent implements OnInit {
                 userEmail: [this.theEmail],
                 userName: [''],
                 userPhoneNumber: [''],
-                userOtpToken: ['unverifed'],
+
               })
 
               await this.userService.login(this.theId, this.dashboardLink)
@@ -107,9 +107,9 @@ export class AddUserComponent implements OnInit {
             userEmail: ['this.theEmail'],
             userName: [''],
             userPhoneNumber: [''],
-            userOtpToken: ['unverifed'],
+
           })
-          this.isLoading = false;
+          this.isLoading = true;
         }
       })
       .catch(console.error)
@@ -136,15 +136,7 @@ export class AddUserComponent implements OnInit {
         this.phoneError.nativeElement.style.display = 'none'
       }
 
-      // this.userService.AddUser(this.userForm.value)
-      // .subscribe(() => {
-      //     console.log('Data added successfully!')
-      //     this.ngZone.run(() => this.router.navigateByUrl('/otp'));
-      //     this.userService.login(this.theId, this.otpLink);
-      //     this.userService.myOtp(this.userForm.value.userPhoneNumber);
-      //   }, (err) => {
-      //     console.log(err);
-      // });
+
     }
   }
 

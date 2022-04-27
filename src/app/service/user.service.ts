@@ -20,7 +20,7 @@ export class UserService {
     'content-type': 'application/json; charset=utf-8',
   })
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   private token: string
   private isAuthenticated = false
