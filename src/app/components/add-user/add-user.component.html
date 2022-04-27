@@ -1,4 +1,6 @@
-<div id="signupForm" #signupForm class="container">
+<mat-spinner class="mx-auto my-5 py-5" *ngIf="!isLoading"></mat-spinner>
+
+<div *ngIf="isLoading" id="signupForm" #signupForm class="container">
   <!-- <div class="text-center">
       <img  style="height: 80px; width: 80px;" class="p-0 my-5 border-0 img-thumbnail rounded-circle mx-auto" src="{{profile.pictureUrl}}" />
     </div> -->

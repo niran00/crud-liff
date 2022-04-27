@@ -15,6 +15,7 @@ type UnPromise<T> = T extends Promise<infer X> ? X : T
   styleUrls: ['./add-user.component.scss'],
 })
 export class AddUserComponent implements OnInit {
+  isLoading = false;
   os: ReturnType<typeof liff.getOS>
   profile: UnPromise<ReturnType<typeof liff.getProfile>>
 
@@ -97,6 +98,7 @@ export class AddUserComponent implements OnInit {
               this.userService.login(this.theId, this.dashboardLink)
             })
             .catch(console.error)
+          this.isLoading = true;
         } else {
           // liff.login();
           this.userForm = this.formBuilder.group({
@@ -106,6 +108,7 @@ export class AddUserComponent implements OnInit {
             userPhoneNumber: [''],
             userOtpToken: ['unverifed'],
           })
+          this.isLoading = true;
         }
       })
       .catch(console.error)
@@ -151,7 +154,7 @@ export class AddUserComponent implements OnInit {
       // console.log(this.setName + ' ' + this.setNumber + ' ' + this.setToken)
       // console.log(this.userForm)
       // console.log(this.otpForm)
-      ;(await this.userService.addUser(this.userForm.value, this.otpForm.value, this.setToken)).subscribe(
+      ; (await this.userService.addUser(this.userForm.value, this.otpForm.value, this.setToken)).subscribe(
         () => {
           console.log('Data added successfully!')
           this.userService.login(this.theId, this.dashboardLink)
