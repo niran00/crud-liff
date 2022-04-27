@@ -1,33 +1,37 @@
 <div class="container h-100 my-auto">
-
-
-     
   <div class="d-flex my-5 align-items-center justify-content-center">
-    <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
-      
-      <input hidden formControlName="userId" required>
-    
-  
+    <form id="userupdateForm" #userupdateForm [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+      <input hidden formControlName="userId" required />
+
       <mat-form-field class="w-100" MatFormFieldControl appearance="fill">
         <mat-label>หมายเลขโทรศัพท์</mat-label>
-        <input matInput formControlName="userName" required>
+        <input matInput formControlName="userName" required />
       </mat-form-field>
-    
-       <mat-form-field class="w-100" MatFormFieldControl appearance="fill">
+
+      <mat-form-field class="w-100" MatFormFieldControl appearance="fill">
         <mat-label>หมายเลขโทรศัพท์</mat-label>
-         <input matInput type="tel" ngModel minlength="10" maxlength="10" formControlName="userPhoneNumber"  required>
-       </mat-form-field>
-  
-  
-       <div class="form-group">
-         <button  mat-raised-button   class="w-100" color="primary" type="submit">แก้ไข</button>
-       </div>
-  
-     </form>
+        <input matInput type="tel" minlength="10" maxlength="10" formControlName="userPhoneNumber" required />
+      </mat-form-field>
+
+      <div class="form-group">
+        <button mat-raised-button class="w-100" color="primary" type="submit">แก้ไข</button>
+      </div>
+    </form>
   </div>
- 
 
-
-  
-
+  <div id="otpform" #otpform class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <form [formGroup]="otpForm" (ngSubmit)="otpSubmit()">
+          <mat-form-field MatFormField Control class="w-100 example-full-width" appearance="fill">
+            <mat-label>OTP</mat-label>
+            <input matInput type="text" formControlName="otpConfirm" required />
+          </mat-form-field>
+          <div class="form-group">
+            <button mat-raised-button class="w-100" color="primary" type="submit">Confirm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

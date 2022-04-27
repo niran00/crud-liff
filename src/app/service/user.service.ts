@@ -28,6 +28,8 @@ export class UserService {
   private authStatusListener = new Subject<boolean>()
   private otpToken: string
   private otpPin: string
+  private resetotpToken: string
+  private resetotpPin: string
 
   getToken() {
     return this.token
@@ -51,6 +53,14 @@ export class UserService {
 
   getOtpPin() {
     return this.otpPin
+  }
+
+  resetOtpToken() {
+    return this.resetotpToken
+  }
+
+  resetOtpPin() {
+    return this.resetotpPin
   }
 
   //Login
@@ -139,6 +149,33 @@ export class UserService {
   updateUser(id: any, data: any): Observable<any> {
     let API_URL = `${this.REST_API}/update-user/${id}`
     return this.httpClient.put(API_URL, data, { headers: this.httpHeaders }).pipe(catchError(this.handleError))
+  }
+
+  //OTP
+  async newOtp(userPhoneNumber?: any) {
+    const authData: any = { userPhoneNumber: userPhoneNumber }
+    let API_URL = `${this.REST_API}/verify-new-number`
+
+    let data = this.httpClient.post<{ otpTok: string; otpPin: string }>(API_URL, authData, { headers: this.httpHeaders })
+    const newotpToken = await lastValueFrom(data)
+    this.resetotpToken = newotpToken.otpTok
+    this.resetotpPin = newotpToken.otpPin
+  }
+
+  // Add
+  // async addUser(data: User, otp: OtpPin, token: string): Promise<Observable<any>> {
+  //   let neededPin = otp.otpConfirm
+  //   let neededData = [data, neededPin, token]
+  //   let API_URL = `${this.REST_API}/add-user`
+  //   return this.httpClient.post(API_URL, neededData, { headers: this.httpHeaders }).pipe(catchError(this.handleError))
+  // }
+
+  // Update
+  async updateNewNumber(id: any, data: any, otp: OtpPin, token: string): Promise<Observable<any>> {
+    let neededPin = otp.otpConfirm
+    let neededData = [id, data, neededPin, token]
+    let API_URL = `${this.REST_API}/update-new-number/${id}`
+    return this.httpClient.put(API_URL, neededData, { headers: this.httpHeaders }).pipe(catchError(this.handleError))
   }
 
   // Delete
