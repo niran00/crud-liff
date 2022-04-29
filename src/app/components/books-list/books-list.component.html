@@ -1,51 +1,50 @@
 <section #profile class="text-center pt-5" id="profile">
   <img #picutreUrl class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
 
-    <div class="container pt-3">
-
-      <p #userId id="userId"></p>
-      <p #displayName id="displayName"></p>
-      <p #statusMessage id="statusMessage"></p>
-      <p #email id="email"></p>
-  
-    </div>
-
+  <div class="container pt-3">
+    <p #userId id="userId"></p>
+    <p #displayName id="displayName"></p>
+    <p #statusMessage id="statusMessage"></p>
+    <p #email id="email"></p>
+  </div>
 </section>
 
 <div class="container">
-  <img #picutreUrl style="height: 80px; width: 80px;" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
-    
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h2 class="h2">Books List</h2>
-    </div>
-   
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Creator</th>
-            <th scope="col">Phone Number</th>
-            <!-- <th scope="col">Description</th> -->
-            <th class="text-center" scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let book of Books; let i = index; let last = last; ">
-              <ng-container *ngIf=" tokenUserId == book.creator" >
-                <th scope="row">{{book._id}}</th>
-                <td>{{book.creator}}</td>
-                <td>{{book.price}}</td>
-                <!-- <td>{{book.description}}</td> -->
-                <td class="text-center">
-                  <div *ngIf="userIsAuthenicated">
-                    <button class="btn btn-sm btn-primary" routerLink="/edit-book/{{book._id}}">Edit</button>
-                    <button class="btn btn-sm btn-danger" (click)="delete(book._id, i)">Delete</button>
-                  </div>
+  <img #picutreUrl style="height: 80px; width: 80px" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
 
-              </ng-container>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2 class="h2">Books List</h2>
   </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Creator</th>
+          <th scope="col">Phone Number</th>
+          <!-- <th scope="col">Description</th> -->
+          <th class="text-center" scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of Books; let i = index; let last = last">
+          <ng-container *ngIf="tokenUserId == book.creator">
+            <th scope="row">{{ book._id }}</th>
+            <td>
+              <div><img [src]="book.imagePath" class="img-thumbnail" [alt]="book.title" /></div>
+            </td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.description }}</td>
+            <td class="text-center">
+              <div *ngIf="userIsAuthenicated">
+                <button class="btn btn-sm btn-primary" routerLink="/edit-book/{{ book._id }}">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="delete(book._id, i)">Delete</button>
+              </div>
+            </td></ng-container
+          >
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

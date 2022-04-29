@@ -15,52 +15,52 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 export class UserprofileComponent implements AfterViewInit {
 
   bookForm: FormGroup;
-   
+
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
     private crudService: CrudService
-  ) { 
+  ) {
     this.bookForm = this.formBuilder.group({
       name: [''],
       price: [''],
       description: ['']
     })
   }
- 
+
   ngOnInit() { }
 
-  @ViewChild('nickname') nickname: ElementRef | any  ;
-  @ViewChild('phone') phone: ElementRef | any  ;
- 
-  onSubmit(): any {
-    if(this.bookForm.invalid){
-      return
-    } else{
+  @ViewChild('nickname') nickname: ElementRef | any;
+  @ViewChild('phone') phone: ElementRef | any;
 
-      this.crudService.AddBook(this.bookForm.value)
-      .subscribe(() => {
-          console.log('Data added successfully!')
-          this.ngZone.run(() => this.router.navigateByUrl('/otp'))
-        }, (err) => {
-          console.log(err);
-      }); 
+  onSubmit(): any {
+    if (this.bookForm.invalid) {
+      return
+    } else {
+
+      // this.crudService.AddBook(this.bookForm.value)
+      //   .subscribe(() => {
+      //     console.log('Data added successfully!')
+      //     this.ngZone.run(() => this.router.navigateByUrl('/otp'))
+      //   }, (err) => {
+      //     console.log(err);
+      //   });
 
     }
-    
+
   }
 
-  @ViewChild('body') body: ElementRef | any  ;
-  @ViewChild('profile') profile: ElementRef | any  ;
-  @ViewChild('picutreUrl') picutreUrl: ElementRef | any  ;
-  @ViewChild('userId') userId: ElementRef | any  ;
-  @ViewChild('displayName') displayName: ElementRef | any  ;
-  @ViewChild('statusMessage') statusMessage: ElementRef | any  ;
-  @ViewChild('email') email: ElementRef | any  ;
-  
+  @ViewChild('body') body: ElementRef | any;
+  @ViewChild('profile') profile: ElementRef | any;
+  @ViewChild('picutreUrl') picutreUrl: ElementRef | any;
+  @ViewChild('userId') userId: ElementRef | any;
+  @ViewChild('displayName') displayName: ElementRef | any;
+  @ViewChild('statusMessage') statusMessage: ElementRef | any;
+  @ViewChild('email') email: ElementRef | any;
 
-  async  main() {
+
+  async main() {
     liff.ready.then(() => {
       if (liff.getOS() === 'android') {
         // this.body.nativeElement.style.backgroundColor = '#888';
@@ -71,7 +71,7 @@ export class UserprofileComponent implements AfterViewInit {
     });
     await liff.init({ liffId: '1656955187-j6JWxVQG' });
   }
-  
+
   async getUserProfile() {
     const profile = await liff.getProfile();
     this.picutreUrl.nativeElement.src = profile.pictureUrl;
@@ -81,7 +81,7 @@ export class UserprofileComponent implements AfterViewInit {
     this.email.nativeElement.innerHTML = "<b>Email : </b>" + liff.getDecodedIDToken()?.email;
   }
 
-  ngAfterViewInit(): void { 
+  ngAfterViewInit(): void {
     this.main();
   }
 

@@ -1,20 +1,16 @@
 <mat-toolbar>
-    <span>KONICA</span>
+  <span>KONICA</span>
 
-    <!-- <div class="ms-auto example-button-row">
-        <button mat-raised-button class="ms-2" routerLink="/" >Home</button>
-        <button mat-raised-button class="ms-2" routerLink="/otp">OTP</button>
-        <button mat-raised-button class="ms-2" routerLink="dashboard">Dashboard</button>
-        <button mat-raised-button class="ms-2" routerLink="/add-book" >New Book</button>
-        <button mat-raised-button class="ms-2" routerLink="/books-list" >Books</button>
-        <button mat-raised-button class="ms-2" routerLink="/add-user" >Add Users</button>
-        <button mat-raised-button class="ms-2" routerLink="/users-list" >Users List</button>
-      
-        <button  *ngIf="!userIsAuthenicated"  mat-raised-button class="ms-2" routerLink="/login" >Login</button>
-        
-        
-        
-       
-    </div>  -->
-    <button *ngIf="userIsAuthenicated" mat-raised-button class="ms-auto" (click)="onLogout()" >Logout</button>
+  <div class="ms-auto example-button-row">
+    <button mat-raised-button class="ms-2" routerLink="/">Home</button>
+    <button mat-raised-button class="ms-2" routerLink="/otp">OTP</button>
+    <button mat-raised-button class="ms-2" routerLink="dashboard">Dashboard</button>
+    <button mat-raised-button class="ms-2" routerLink="/add-book">New Book</button>
+    <button mat-raised-button class="ms-2" routerLink="/books-list">Books</button>
+    <button mat-raised-button class="ms-2" routerLink="/add-user">Add Users</button>
+    <button mat-raised-button class="ms-2" routerLink="/users-list">Users List</button>
+
+    <button *ngIf="!userIsAuthenicated" mat-raised-button class="ms-2" routerLink="/login">Login</button>
+  </div>
+  <button *ngIf="userIsAuthenicated" mat-raised-button class="ms-auto" (click)="onLogout()">Logout</button>
 </mat-toolbar>

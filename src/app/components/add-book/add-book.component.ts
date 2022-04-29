@@ -1,41 +1,65 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { CrudService } from './../../service/crud.service';
-import { FormGroup, FormBuilder } from "@angular/forms";
- 
+import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms";
+
 @Component({
   selector: 'app-add-book',
   templateUrl: './add-book.component.html',
   styleUrls: ['./add-book.component.scss']
 })
- 
+
 export class AddBookComponent implements OnInit {
- 
+
   bookForm: FormGroup;
-   
+  imagePreview: any;
+
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
     private crudService: CrudService
-  ) { 
-    this.bookForm = this.formBuilder.group({
-      name: [''],
-      price: [''],
-      description: ['']
+  ) {
+    // this.bookForm = this.formBuilder.group({
+    //   name: [''],
+    //   price: [''],
+    //   description: ['']
+    // })
+  }
+
+  ngOnInit() {
+    this.bookForm = new FormGroup({
+      image: new FormControl(null, { validators: [Validators.required] }),
+      title: new FormControl(null, { validators: [Validators.required] }),
+      price: new FormControl(null, { validators: [Validators.required] }),
+      description: new FormControl(null, { validators: [Validators.required] })
     })
   }
- 
-  ngOnInit() { }
- 
+
+
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.bookForm.patchValue({ image: file });
+    this.bookForm.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file)
+
+    console.log(file);
+    console.log(this.bookForm);
+
+  }
+
   onSubmit(): any {
-    this.crudService.AddBook(this.bookForm.value)
-    .subscribe(() => {
+    this.crudService.AddBook(this.bookForm.value.title, this.bookForm.value.price, this.bookForm.value.description, this.bookForm.value.image)
+      .subscribe(() => {
         console.log('Data added successfully!')
         this.ngZone.run(() => this.router.navigateByUrl('/books-list'))
       }, (err) => {
         console.log(err);
-    });
+      });
   }
- 
+
 }

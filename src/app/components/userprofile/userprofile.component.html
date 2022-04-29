@@ -1,8 +1,8 @@
 <div #body id="body">
-    <section #profile class="text-center pt-5" id="profile">
-      <img #picutreUrl style="height: 80px; width: 80px;" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
-    
-        <!-- <div class="container pt-3">
+  <section #profile class="text-center pt-5" id="profile">
+    <img #picutreUrl style="height: 80px; width: 80px" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
+
+    <!-- <div class="container pt-3">
 
          
           <p #displayName id="displayName"></p>
@@ -11,38 +11,31 @@
       
         </div> -->
 
-        <p #userId id="userId"></p>
-      
-<div class="container p-2">
+    <p #userId id="userId"></p>
 
-  <div class="row justify-content-center mt-3">
-    <div class="col-12">
-        <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div class="container p-2">
+      <div class="row justify-content-center mt-3">
+        <div class="col-12">
+          <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="w-100 example-full-width" appearance="fill">
+              <mat-label>ชื่อ นามสกุล</mat-label>
+              <input #nickname matInput type="text" formControlName="name" required />
+            </mat-form-field>
 
-          <mat-form-field class="w-100 example-full-width" appearance="fill">
-            <mat-label>ชื่อ นามสกุล</mat-label>
-            <input #nickname matInput  type="text" formControlName="name" required>
-          </mat-form-field>
-        
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>หมายเลขโทรศัพท์</mat-label>
-            <input #phone  matInput type="tel" maxlength="10" formControlName="price" required>
-          </mat-form-field>
-          
-        
-          <!-- <div class="form-group">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>หมายเลขโทรศัพท์</mat-label>
+              <input #phone matInput type="tel" maxlength="10" formControlName="price" required />
+            </mat-form-field>
+
+            <!-- <div class="form-group">
             <label>Description</label>
             <input class="form-control" type="text" formControlName="description" required>
           </div> -->
-   
+
             <button mat-raised-button class="w-100 mt-3" type="submit" color="primary">ต่อไป</button>
-          
-        </form>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
-
-    
   </section>
-
 </div>
