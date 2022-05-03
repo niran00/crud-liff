@@ -27,6 +27,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './service/auth-interceptor';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { ReadBookComponent } from './components/read-book/read-book.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     UsersListComponent,
     LoginComponent,
     UserDetailComponent,
+    ReadBookComponent,
 
   ],
   imports: [

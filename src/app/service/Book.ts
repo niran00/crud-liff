@@ -3,5 +3,8 @@ export class Book {
     name!: String;
     price!: String;
     description!: String;
+    details1!: String;
+    details2!: String;
+    details3!: String;
     image!: String;
 }

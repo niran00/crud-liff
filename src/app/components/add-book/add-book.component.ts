@@ -30,8 +30,11 @@ export class AddBookComponent implements OnInit {
   ngOnInit() {
     this.bookForm = new FormGroup({
       image: new FormControl(null, { validators: [Validators.required] }),
-      title: new FormControl(null, { validators: [Validators.required] }),
+      name: new FormControl(null, { validators: [Validators.required] }),
       price: new FormControl(null, { validators: [Validators.required] }),
+      details1: new FormControl(null, { validators: [Validators.required] }),
+      details2: new FormControl(null, { validators: [Validators.required] }),
+      details3: new FormControl(null, { validators: [Validators.required] }),
       description: new FormControl(null, { validators: [Validators.required] })
     })
   }
@@ -53,7 +56,7 @@ export class AddBookComponent implements OnInit {
   }
 
   onSubmit(): any {
-    this.crudService.AddBook(this.bookForm.value.title, this.bookForm.value.price, this.bookForm.value.description, this.bookForm.value.image)
+    this.crudService.AddBook(this.bookForm.value.name, this.bookForm.value.price, this.bookForm.value.description, this.bookForm.value.details1, this.bookForm.value.details2, this.bookForm.value.details3, this.bookForm.value.image)
       .subscribe(() => {
         console.log('Data added successfully!')
         this.ngZone.run(() => this.router.navigateByUrl('/books-list'))

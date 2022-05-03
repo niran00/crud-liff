@@ -29,14 +29,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let book of Books; let i = index; let last = last">
-          <ng-container *ngIf="tokenUserId == book.creator">
-            <th scope="row">{{ book._id }}</th>
+          <ng-container *ngIf="book.creator">
+            <th scope="row">{{ book.name }}</th>
             <td>
-              <div class="imgbox"><img [src]="book.imagePath" class="img-thumbnail" [alt]="book.title" /></div>
+              <div class="imgbox"><img [src]="book.imagePath" class="img-thumbnail" [alt]="book.name" /></div>
             </td>
             <td>{{ book.price }}</td>
             <td>{{ book.description }}</td>
             <td class="text-center">
+              <button class="btn btn-sm btn-primary" routerLink="/read-book/{{ book._id }}">Read</button>
               <div *ngIf="userIsAuthenicated">
                 <button class="btn btn-sm btn-primary" routerLink="/edit-book/{{ book._id }}">Edit</button>
                 <button class="btn btn-sm btn-danger" (click)="delete(book._id, i)">Delete</button>

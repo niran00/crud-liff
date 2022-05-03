@@ -7,11 +7,11 @@
           <input type="file" #filePicker (change)="onImagePicked($event)" />
         </div>
         <div *ngIf="imagePreview !== '' && imagePreview">
-          <img class="img-thumbnail" [src]="imagePreview" [alt]="bookForm.value.title" />
+          <img class="img-thumbnail" [src]="imagePreview" [alt]="bookForm.value.name" />
         </div>
         <div class="form-group">
           <label>Name</label>
-          <input class="form-control" type="text" formControlName="title" required />
+          <input class="form-control" type="text" formControlName="name" required />
         </div>
 
         <div class="form-group">
@@ -22,6 +22,21 @@
         <div class="form-group">
           <label>Description</label>
           <input class="form-control" type="text" formControlName="description" required />
+        </div>
+
+        <div class="form-group">
+          <label>Details A</label>
+          <textarea class="form-control" type="text" formControlName="details1" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Details B</label>
+          <textarea class="form-control" type="text" formControlName="details2" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Details C</label>
+          <textarea class="form-control" type="text" formControlName="details3" required></textarea>
         </div>
 
         <div class="form-group">

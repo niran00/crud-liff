@@ -12,7 +12,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class CrudService {
 
   // Node/Express API
-  REST_API: string = 'https://afternoon-brook-66471.herokuapp.com/api';
+  REST_API: string = 'http://localhost:8000/api';
 
   // Http Header
   // httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -21,12 +21,17 @@ export class CrudService {
   constructor(private httpClient: HttpClient) { }
 
   // Add
-  AddBook(title: string, price: string, description: string, image: File): Observable<any> {
+  AddBook(name: string, price: string, description: string, details1: string, details2: string, details3: string, image: File): Observable<any> {
     const postData = new FormData();
-    postData.append("title", title);
+    postData.append("name", name);
     postData.append("price", price);
     postData.append("description", description);
-    postData.append("image", image, title);
+
+    postData.append("details1", details1);
+    postData.append("details2", details2);
+    postData.append("details3", details3);
+
+    postData.append("image", image, name);
     console.log("this nthe file" + image.name)
     let API_URL = `${this.REST_API}/add-book`;
     return this.httpClient.post(API_URL, postData)

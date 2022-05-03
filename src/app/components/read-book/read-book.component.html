@@ -1,0 +1,51 @@
+<div class="container mt-5 mb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="images p-3">
+              <div class="text-center p-4"><img id="main-image" [src]="Book.imagePath" width="250" /></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="product p-4">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center"><i class="fa fa-long-arrow-left"></i> <span class="ml-1">Back</span></div>
+                <i class="fa fa-shopping-cart text-muted"></i>
+              </div>
+              <div class="mt-4 mb-3">
+                <span class="text-uppercase text-muted brand">{{ Book.name }}</span>
+
+                <div class="price d-flex flex-row align-items-center">
+                  <p class="about">{{ Book.description }}</p>
+                </div>
+              </div>
+              <span class="act-price">Category: {{ Book.price }}</span>
+
+              <div class="cart mt-4 align-items-center"><button class="btn btn-primary text-uppercase mr-2 px-4">Buy Now</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex mt-5 justify-content-center">
+    <div class="col-md-10">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Specifications</button>
+          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Download Brochure</button>
+        </div>
+      </nav>
+      <div class="tab-content border p-3" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div [innerHTML]="Book.details1"></div></div>
+
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div [innerHTML]="Book.details2"></div></div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div [innerHTML]="Book.details3"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
