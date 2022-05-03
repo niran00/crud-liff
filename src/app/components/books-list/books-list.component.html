@@ -32,7 +32,7 @@
           <ng-container *ngIf="tokenUserId == book.creator">
             <th scope="row">{{ book._id }}</th>
             <td>
-              <div><img [src]="book.imagePath" class="img-thumbnail" [alt]="book.title" /></div>
+              <div class="imgbox"><img [src]="book.imagePath" class="img-thumbnail" [alt]="book.title" /></div>
             </td>
             <td>{{ book.price }}</td>
             <td>{{ book.description }}</td>
