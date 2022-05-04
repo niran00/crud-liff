@@ -11,7 +11,7 @@ import liff from '@line/liff/dist/lib'
 })
 export class UserService {
   // Node/Express API
-  REST_API: string = 'https://afternoon-brook-66471.herokuapp.com/api'
+  REST_API: string = 'http://localhost:8000/api'
 
   // Http Header
   // httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -30,6 +30,7 @@ export class UserService {
   private otpPin: string
   private resetotpToken: string
   private resetotpPin: string
+  private tokenTimer: any
 
   getToken() {
     return this.token
@@ -67,13 +68,20 @@ export class UserService {
   login(userId: any, reRoute: any) {
     const authData: any = { userId: userId }
     let API_URL = `${this.REST_API}/login`
-    return this.httpClient.post<{ token: string; tokenUserId: string }>(API_URL, authData).subscribe((response) => {
+    return this.httpClient.post<{ token: string; tokenUserId: string; expiresIn: string }>(API_URL, authData).subscribe((response) => {
       console.log(response)
       const token = response.token
       this.token = token
       if (token) {
+        const expiresInDuration: any = response.expiresIn
+
+        this.setAuthTimer(expiresInDuration);
         this.isAuthenticated = true
-        this.authStatusListener.next(true)
+        this.authStatusListener.next(true);
+        const now = new Date();
+        const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+        console.log(expirationDate);
+        this.saveAuthData(token, expirationDate)
         this.tokenUserId = response.tokenUserId
       }
       this.router.navigate(['/' + reRoute])
@@ -87,10 +95,59 @@ export class UserService {
     this.authStatusListener.next(false)
     this.router.navigate(['/login'])
     this.tokenUserId = null
-
+    clearTimeout(this.tokenTimer);
+    this.clearAuthData();
     if (liff.isLoggedIn()) {
       liff.logout()
       liff.closeWindow()
+    }
+  }
+
+  test() {
+    console.log("test");
+  }
+
+  autoAuthUser() {
+    const authInformation = this.getAuthData();
+    if (!authInformation) {
+      return;
+    }
+    const now = new Date();
+    const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
+    console.log("ts" + authInformation, expiresIn);
+    if (expiresIn > 0) {
+      this.token = authInformation.token;
+      this.isAuthenticated = true;
+      this.setAuthTimer(expiresIn / 1000);
+      this.authStatusListener.next(true);
+    }
+  }
+
+  private setAuthTimer(duration: number) {
+    console.log("Setting timer:" + duration)
+    this.tokenTimer = setTimeout(() => {
+      this.logout();
+    }, duration * 1000);
+  }
+
+  private saveAuthData(token: string, expirationDate: Date) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('expiration', expirationDate.toISOString());
+  }
+
+  private clearAuthData() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("expiration");
+  }
+
+  private getAuthData() {
+    const token = localStorage.getItem("token");
+    const expirationDate = localStorage.getItem("expiration");
+    if (!token || !expirationDate) {
+      return;
+    } return {
+      token: token,
+      expirationDate: new Date(expirationDate)
     }
   }
 
