@@ -96,10 +96,10 @@ export class AddUserComponent implements OnInit {
                 userPhoneNumber: [''],
 
               })
-
+              await this.popupbtn.nativeElement.click();
               await this.userService.login(this.theId, this.dashboardLink)
               this.isLoading = true;
-              this.popupbtn.nativeElement.click();
+
             })
             .catch(console.error)
 
@@ -113,7 +113,7 @@ export class AddUserComponent implements OnInit {
 
           })
           this.isLoading = true;
-          this.popupbtn.nativeElement.click();
+
         }
       })
       .catch(console.error)
