@@ -96,7 +96,7 @@ export class AddUserComponent implements OnInit {
                 userPhoneNumber: [''],
 
               })
-              await this.popupbtn.nativeElement.click();
+
               await this.userService.login(this.theId, this.dashboardLink)
               this.isLoading = true;
 
