@@ -10,6 +10,6 @@
     <button mat-raised-button class="ms-2" routerLink="/users-list">Users List</button>
   </div>
 
-  <button *ngIf="!userIsAuthenicated" mat-raised-button class="ms-2" routerLink="/login">Login</button>
+  <button *ngIf="!userIsAuthenicated" mat-raised-button class="ms-auto" routerLink="/login">Login</button>
   <button *ngIf="userIsAuthenicated" mat-raised-button class="ms-auto" (click)="onLogout()">Logout</button>
 </mat-toolbar>
