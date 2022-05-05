@@ -18,11 +18,11 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Creator</th>
-          <th scope="col">Phone Number</th>
+          <th scope="col">Name</th>
+          <th scope="col">Image</th>
+          <th scope="col">Description</th>
           <!-- <th scope="col">Description</th> -->
-          <th class="text-center" scope="col">Action</th>
+          <th class="text-center" scope="col">Details</th>
         </tr>
       </thead>
       <tbody>
@@ -35,7 +35,7 @@
             <td>{{ book.price }}</td>
             <td>{{ book.description }}</td>
             <td class="text-center">
-              <button class="btn btn-sm btn-primary" routerLink="/read-book/{{ book._id }}">Read</button>
+              <button class="btn btn-sm btn-primary" routerLink="/read-book/{{ book._id }}">View</button>
               <div *ngIf="userIsAuthenicated">
                 <button class="btn btn-sm btn-primary" routerLink="/edit-book/{{ book._id }}">Edit</button>
                 <button class="btn btn-sm btn-danger" (click)="delete(book._id, i)">Delete</button>
