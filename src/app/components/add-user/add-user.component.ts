@@ -23,6 +23,7 @@ export class AddUserComponent implements OnInit {
   @ViewChild('otpform') otpform: ElementRef | any
   @ViewChild('phoneError') phoneError: ElementRef | any
   @ViewChild('signupForm') signupForm: ElementRef | any
+  @ViewChild('popupbtn') popupbtn: ElementRef | any
 
   async main() {
     liff.ready.then(() => {
@@ -73,6 +74,7 @@ export class AddUserComponent implements OnInit {
   }
 
   ngOnInit() {
+
     liff
       .init({ liffId: '1656955187-j6JWxVQG' })
       .then(() => {
@@ -110,9 +112,13 @@ export class AddUserComponent implements OnInit {
 
           })
           this.isLoading = true;
+          this.popupbtn.nativeElement.click();
         }
       })
       .catch(console.error)
+
+
+
   }
 
   async onSubmit(): Promise<any> {
