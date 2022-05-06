@@ -14,13 +14,11 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './service/auth.guard';
 import { ReadBookComponent } from './components/read-book/read-book.component';
-import { EntrytypeComponent } from './components/entrytype/entrytype.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
-    canActivate: [AuthGuard]
+    component: AddUserComponent
   },
   {
     path: 'dashboard',
