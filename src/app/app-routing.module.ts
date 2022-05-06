@@ -19,7 +19,8 @@ import { EntrytypeComponent } from './components/entrytype/entrytype.component';
 const routes: Routes = [
   {
     path: '',
-    component: EntrytypeComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',
