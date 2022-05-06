@@ -28,6 +28,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './service/auth-interceptor';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { ReadBookComponent } from './components/read-book/read-book.component';
+import { EntrytypeComponent } from './components/entrytype/entrytype.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { ReadBookComponent } from './components/read-book/read-book.component';
     LoginComponent,
     UserDetailComponent,
     ReadBookComponent,
+    EntrytypeComponent,
 
   ],
   imports: [
