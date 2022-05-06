@@ -16,10 +16,7 @@ import { AuthGuard } from './service/auth.guard';
 import { ReadBookComponent } from './components/read-book/read-book.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AddUserComponent
-  },
+
   {
     path: 'dashboard',
     component: DashboardComponent
