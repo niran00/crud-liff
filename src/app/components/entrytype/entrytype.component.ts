@@ -74,13 +74,16 @@ export class EntrytypeComponent implements OnInit {
 
         } else {
           // liff.login();
-
           this.isLoading = true;
-          this.router.navigate(['add-user']);
+
 
         }
       })
       .catch(console.error)
+
+    if (this.isLoading == true) {
+      this.router.navigate(['add-user']);
+    }
 
   }
 
