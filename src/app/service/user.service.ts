@@ -122,7 +122,7 @@ export class UserService {
       this.authStatusListener.next(true);
     }
 
-    this.router.navigate(['dashboard']);
+
   }
 
   private setAuthTimer(duration: number) {
