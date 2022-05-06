@@ -73,6 +73,8 @@ export class EntrytypeComponent implements OnInit {
             })
             .catch(console.error)
 
+        } else {
+          this.router.navigate(['add-user']);
         }
       })
       .catch(console.error)
