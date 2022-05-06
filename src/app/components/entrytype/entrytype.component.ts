@@ -69,7 +69,7 @@ export class EntrytypeComponent implements OnInit {
 
               await this.userService.login(this.theId, this.dashboardLink)
               this.isLoading = true;
-
+              this.userIsAuthenicated = true;
             })
             .catch(console.error)
 
@@ -80,6 +80,7 @@ export class EntrytypeComponent implements OnInit {
     if (!this.userIsAuthenicated) {
       this.router.navigate(['add-user']);
     }
+
   }
 
 
