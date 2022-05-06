@@ -77,9 +77,7 @@ export class EntrytypeComponent implements OnInit {
       })
       .catch(console.error)
 
-    if (!this.userIsAuthenicated) {
-      this.router.navigate(['add-user']);
-    }
+
 
   }
 
