@@ -17,8 +17,9 @@ type UnPromise<T> = T extends Promise<infer X> ? X : T
 })
 export class EntrytypeComponent implements OnInit {
   isLoading = false;
+  userIsAuthenicated: any
 
-  userIsAuthenicated = false;
+
   constructor(private userService: UserService, private router: Router,) { }
 
   os: ReturnType<typeof liff.getOS>
@@ -69,8 +70,8 @@ export class EntrytypeComponent implements OnInit {
 
               await this.userService.login(this.theId, this.dashboardLink)
 
-              if (this.userIsAuthenicated == false) {
-                this.router.navigate(['add-user']);
+              if (!this.userIsAuthenicated) {
+                await this.router.navigate(['add-user']);
               }
 
             })
