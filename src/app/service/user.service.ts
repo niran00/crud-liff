@@ -120,9 +120,7 @@ export class UserService {
       this.isAuthenticated = true;
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
-      this.router.navigate(['/dashboard']);
     }
-
 
   }
 
