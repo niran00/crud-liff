@@ -121,6 +121,8 @@ export class UserService {
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
     }
+
+    this.router.navigate(['dashboard']);
   }
 
   private setAuthTimer(duration: number) {

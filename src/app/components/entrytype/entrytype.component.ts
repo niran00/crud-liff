@@ -80,6 +80,7 @@ export class EntrytypeComponent implements OnInit {
         }
       })
       .catch(console.error)
+
   }
 
 
