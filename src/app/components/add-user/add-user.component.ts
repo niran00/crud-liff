@@ -73,9 +73,9 @@ export class AddUserComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
+  async ngOnInit() {
 
-    liff
+    await liff
       .init({ liffId: '1656955187-j6JWxVQG' })
       .then(() => {
         this.os = liff.getOS()
@@ -118,7 +118,7 @@ export class AddUserComponent implements OnInit {
       })
       .catch(console.error)
 
-
+    this.popupbtn.nativeElement.click();
 
   }
 
