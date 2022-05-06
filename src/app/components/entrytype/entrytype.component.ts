@@ -65,14 +65,12 @@ export class EntrytypeComponent implements OnInit {
 
               this.theId = this.profile.userId
               this.theEmail = liff.getDecodedIDToken()?.email
-              this.dashboardLink = 'dashboard'
+              this.dashboardLink = ''
 
 
               await this.userService.login(this.theId, this.dashboardLink)
 
-              if (!this.userIsAuthenicated) {
-                await this.router.navigate(['add-user']);
-              }
+
 
             })
             .catch(console.error)
@@ -82,7 +80,11 @@ export class EntrytypeComponent implements OnInit {
       })
       .catch(console.error)
 
-
+    if (!this.userIsAuthenicated) {
+      this.router.navigate(['add-user']);
+    } else {
+      this.router.navigate(['dashboard']);
+    }
 
   }
 
