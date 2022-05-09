@@ -64,15 +64,7 @@ export class EntrytypeComponent implements OnInit {
             liff
               .getProfile()
               .then(async (profile) => {
-                this.profile = profile
-
-                this.theId = this.profile.userId
-                this.theEmail = liff.getDecodedIDToken()?.email
-
-
-
                 this.router.navigate(['/dashboard']);
-
               })
               .catch(console.error)
 
