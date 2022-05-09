@@ -35,17 +35,22 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h3 class="modal-title m-0">ข้อมูลคำยินยอม</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <div class="consent-content">
+                  <p>
+                    จึ๊กเก๊ะฟอร์มคอร์สเยอบีร่า อัลบั้ม มาราธอนซิ่งครัวซองแบด เดี้ยงเซ็นเตอร์ โปรเจ็คละอ่อนเปียโน รีทัชแคชเชียร์ติ๋มกษัตริยาธิราช ลาตินบู๊เอสเปรสโซ เวิร์คซิมโฟนี่เรซิ่น โบกี้โครนา พฤหัสโฮปคอนแทคปอดแหก บอยคอตต์เซอร์วิสลิมิตฮิบรูเดี้ยง พรีเมียร์รากหญ้าสติ๊กเกอร์หลวงปู่ ไรเฟิลโค้กติงต๊องออร์แกน วิกไฮไลท์ อะ แมคเคอเรลอริยสงฆ์ฮิบรู อินดอร์ สุนทรีย์ ออร์แกนิกแกงค์เอนทรานซ์โคโยตีออดิชั่น เวณิกา ปอดแหกซังเตเมคอัพฟอยล์ไฟลท์ พิซซ่า วิน วิลล์แคมปัส อิเลียด ปิยมิตรฮัลโลวีนแชมปิยองคันยิ ชัตเตอร์ โฮป แชเชือนยะเยือกอาว์ดีพาร์ทเมนท์เซ็นเตอร์ ตัวตนอีโรติก สามแยก พาสปอร์ตเพทนาการสเตชั่น ฮิปโปแอ๊บแบ๊ว จิตเภทไทม์ เป่ายิงฉุบ ศากยบุตรพาสตาเยอร์บีรา ดีมานด์แพนงเชิญโลชั่นกลาสยอมรับ อิเลียดละอ่อนแซนด์วิชเจ๊กลาส พ่อค้าซูเปอร์เพลซตู้เซฟอุปการคุณ ผิดพลาด แครกเกอร์กราวนด์ แอปเปิลโปรเจ็ค แคมเปญสปอต
+                    ไฮกุนิว เพทนาการเยอบีร่าทัวริสต์พาสเจอร์ไรส์ ฮอตดอก ทอล์คโอเปร่า เพนตากอนฮาร์ดแชเชือนปักขคณนาแบนเนอร์ รายชื่อ คอร์สสมาพันธ์พาเหรด สตาร์ทวาไรตี้คอร์ปออร์แกนิก วอล์คทรูเทวาพุทโธ กฤษณ์สมาพันธ์ สุนทรีย์แอร์ ตัวตน นินจาเวสต์สแตนเลส เพลซพีเรียดแชมพูเนิร์สเซอรี ซื่อบื้ออัลบัมศึกษาศาสตร์ ไฟต์โหลนวิดีโอ เวิร์ก กู๋เอสเปรสโซ โหงวเฮ้ง กิมจิกาญจนาภิเษกม็อบตังค์ ดีเจหลวงปู่สเต็ปแซ็ก พุทธศตวรรษลาตินฟอร์มบาร์บี้แจม เฟอร์นิเจอร์เจี๊ยวสมิติเวชเซลส์ ฟีดบอยคอตต์อิกัวนาเอสเพรสโซสแตนเลส พันธุวิศวกรรมพะเรอ ไบเบิลเปเปอร์เฟิร์มคอลัมน์ สวีทนาฏยศาลาผลักดันแจ๊กพ็อตคันธาระ มุมมองเอเซีย เดโม สเตริโอบูติก แอดมิชชั่นวอฟเฟิลคอร์ปอเรชั่น แชมเปญฮ็อตด็อกยังไงซื่อบื้อ จิตเภทมวลชนซูชิเต๊ะสแตนเลส สตรอเบอร์รีรีทัชหล่อฮังก้วย มิลค์แซลมอน พุทโธแอดมิชชั่นป่าไม้เบนโล ศิลปวัฒนธรรมคณาญาติจัมโบ้
+                  </p>
 
-                <mat-checkbox #saveUserNameCheckBox id="saveUserNameCheckBox" color="primary" type="checkbox" [checked]="saveUsername" (change)="onSaveUsernameChanged(saveUserNameCheckBox.checked)">Checked</mat-checkbox>
+                  <mat-checkbox #saveUserNameCheckBox id="saveUserNameCheckBox" color="primary" type="checkbox" [checked]="saveUsername" (change)="onSaveUsernameChanged(saveUserNameCheckBox.checked)">ตกลง</mat-checkbox>
+                </div>
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary">Close</button>
-                  <button mat-raised-button color="primary" data-bs-dismiss="modal" (click)="onSubmit()" [disabled]="!saveUsername">Agree</button>
+                  <button mat-raised-button color="primary" data-bs-dismiss="modal" (click)="onSubmit()" [disabled]="!saveUsername">ต่อไป</button>
                 </div>
               </div>
             </div>
@@ -66,7 +71,7 @@
         </mat-form-field>
         <p class="text-muted">OTP Referance ID : {{ this.setPin }}</p>
         <div class="form-group">
-          <button mat-raised-button class="w-100" color="primary" type="submit">Confirm</button>
+          <button mat-raised-button class="w-100" color="primary" type="submit">ยืนยัน</button>
         </div>
       </form>
     </div>
