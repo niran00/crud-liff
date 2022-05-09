@@ -85,6 +85,13 @@ export class UserService {
         this.tokenUserId = response.tokenUserId
       }
       this.router.navigate(['/' + reRoute])
+
+    }, error => {
+      this.isAuthenticated = false;
+      console.log(this.isAuthenticated);
+      if (!this.isAuthenticated) {
+        this.router.navigate(['/add-user'])
+      }
     })
   }
 

@@ -74,7 +74,7 @@ export class EntrytypeComponent implements OnInit {
 
         } else {
           // liff.login();
-          this.isLoading = true;
+
 
 
         }
