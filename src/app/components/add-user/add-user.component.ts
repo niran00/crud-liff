@@ -15,6 +15,9 @@ type UnPromise<T> = T extends Promise<infer X> ? X : T
   styleUrls: ['./add-user.component.scss'],
 })
 export class AddUserComponent implements OnInit {
+
+  checked = false;
+  disabled = false;
   isLoading = false;
   os: ReturnType<typeof liff.getOS>
   profile: UnPromise<ReturnType<typeof liff.getProfile>>
@@ -46,6 +49,13 @@ export class AddUserComponent implements OnInit {
     return profile.userId
   }
 
+  public saveUsername: boolean;
+
+  public onSaveUsernameChanged(value: boolean) {
+    this.saveUsername = value;
+    console.log(this.saveUsername)
+  }
+
   theId: any = ''
   theEmail: string = ''
   dashboardLink: string = 'dashboard'
@@ -65,6 +75,7 @@ export class AddUserComponent implements OnInit {
       userEmail: [''],
       userName: [''],
       userPhoneNumber: [''],
+      agreeCheck: ['']
 
     })
 
@@ -74,6 +85,7 @@ export class AddUserComponent implements OnInit {
   }
 
   async ngOnInit() {
+
 
     await liff
       .init({ liffId: '1656955187-j6JWxVQG' })
@@ -94,6 +106,8 @@ export class AddUserComponent implements OnInit {
                 userEmail: [this.theEmail],
                 userName: [''],
                 userPhoneNumber: [''],
+                userConsent: [''],
+                agreeCheck: ['']
 
               })
 
@@ -110,7 +124,8 @@ export class AddUserComponent implements OnInit {
             userEmail: ['this.theEmail'],
             userName: [''],
             userPhoneNumber: [''],
-
+            userConsent: [''],
+            agreeCheck: ['']
           })
           this.isLoading = true;
 
@@ -118,7 +133,7 @@ export class AddUserComponent implements OnInit {
       })
       .catch(console.error)
 
-    this.popupbtn.nativeElement.click();
+
 
   }
 

@@ -1,46 +1,46 @@
 <section #profile class="text-center pt-5" id="profile">
   <img #picutreUrl class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
 
-    <div class="container pt-3">
-
-      <p #userId id="userId"></p>
-      <p #displayName id="displayName"></p>
-      <p #statusMessage id="statusMessage"></p>
-      <p #email id="email"></p>
-  
-    </div>
-
+  <div class="container pt-3">
+    <p #userId id="userId"></p>
+    <p #displayName id="displayName"></p>
+    <p #statusMessage id="statusMessage"></p>
+    <p #email id="email"></p>
+  </div>
 </section>
 
 <div class="container">
-  <img #picutreUrl style="height: 80px; width: 80px;" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
-    
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h2 class="h2">User List</h2>
-    </div>
-   
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Phone Number</th>
-            <th class="text-center" scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of Users; let i = index; ">
-              <ng-container >
-                <td scope="row">{{user.userId}}</td>
-                <td>{{user.userName}}</td>
-                <td>{{user.userPhoneNumber}}</td>
-                <td class="text-center">
-                <button class="btn btn-sm btn-primary" routerLink="/edit-user/{{user._id}}">Edit</button>
-                <button class="btn btn-sm btn-danger" (click)="delete(user._id, i)">Delete</button>
-              </ng-container>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <img #picutreUrl style="height: 80px; width: 80px" class="p-0 border-0 img-thumbnail rounded-circle mx-auto" id="pictureUrl" src="" />
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2 class="h2">User List</h2>
   </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Consent</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone Number</th>
+          <th class="text-center" scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of Users; let i = index">
+          <ng-container>
+            <td scope="row">{{ user.userId }}</td>
+            <td>{{ user.userConsent }}</td>
+            <td>{{ user.userName }}</td>
+            <td>{{ user.userPhoneNumber }}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-primary" routerLink="/edit-user/{{ user._id }}">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="delete(user._id, i)">Delete</button>
+            </td></ng-container
+          >
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -5,7 +5,7 @@ export class Hero {
     public userEmail: string,
     public userName: string,
     public userPhoneNumber: string,
-
+    public userConsent: string,
   ) { }
 
 }

@@ -3,7 +3,7 @@ export class User {
   userId!: String
   userName!: String
   userPhoneNumber!: String
-
+  userConsent!: String
 }
 
 export class OtpPin {

@@ -13,6 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 import { AppComponent } from './app.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
@@ -63,6 +65,7 @@ import { EntrytypeComponent } from './components/entrytype/entrytype.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
