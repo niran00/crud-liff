@@ -57,7 +57,6 @@ export class EntrytypeComponent implements OnInit {
 
     if (this.userIsAuthenicated) {
       this.router.navigate(['/dashboard']);
-
     } else {
       await liff
         .init({ liffId: '1656955187-j6JWxVQG' })
@@ -79,11 +78,6 @@ export class EntrytypeComponent implements OnInit {
 
               })
               .catch(console.error)
-
-          } else {
-            // liff.login();
-
-
 
           }
         })
