@@ -56,7 +56,30 @@ export class EntrytypeComponent implements OnInit {
     this.userIsAuthenicated = this.userService.getIsAuth();
 
     if (this.userIsAuthenicated) {
-      this.router.navigate(['/dashboard']);
+      await liff
+        .init({ liffId: '1656955187-j6JWxVQG' })
+        .then(() => {
+          this.os = liff.getOS()
+          if (liff.isLoggedIn()) {
+            liff
+              .getProfile()
+              .then(async (profile) => {
+                this.profile = profile
+
+                this.theId = this.profile.userId
+                this.theEmail = liff.getDecodedIDToken()?.email
+
+
+
+                this.router.navigate(['/dashboard']);
+
+              })
+              .catch(console.error)
+
+          }
+        })
+        .catch(console.error)
+
     } else {
       await liff
         .init({ liffId: '1656955187-j6JWxVQG' })
@@ -83,8 +106,6 @@ export class EntrytypeComponent implements OnInit {
         })
         .catch(console.error)
     }
-
-
 
   }
 
