@@ -64,6 +64,7 @@
           <mat-label>OTP</mat-label>
           <input matInput type="number" formControlName="otpConfirm" required />
         </mat-form-field>
+        <p class="text-muted">OTP Referance ID : {{ this.setPin }}</p>
         <div class="form-group">
           <button mat-raised-button class="w-100" color="primary" type="submit">Confirm</button>
         </div>

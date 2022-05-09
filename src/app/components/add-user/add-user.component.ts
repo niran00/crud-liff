@@ -106,9 +106,7 @@ export class AddUserComponent implements OnInit {
                 userEmail: [this.theEmail],
                 userName: [''],
                 userPhoneNumber: [''],
-                userConsent: [''],
-                agreeCheck: ['']
-
+                userConsent: ['']
               })
 
               await this.userService.login(this.theId, this.dashboardLink)
@@ -124,8 +122,7 @@ export class AddUserComponent implements OnInit {
             userEmail: ['this.theEmail'],
             userName: [''],
             userPhoneNumber: [''],
-            userConsent: [''],
-            agreeCheck: ['']
+            userConsent: ['']
           })
           this.isLoading = true;
 
