@@ -23,6 +23,8 @@ export class EntrytypeComponent implements OnInit {
   os: ReturnType<typeof liff.getOS>
   profile: UnPromise<ReturnType<typeof liff.getProfile>>
 
+  userIsAuthenicated = false;
+
   async main() {
     liff.ready.then(() => {
       if (liff.getOS() === 'android') {
@@ -51,35 +53,44 @@ export class EntrytypeComponent implements OnInit {
 
   async ngOnInit() {
 
-    await liff
-      .init({ liffId: '1656955187-j6JWxVQG' })
-      .then(() => {
-        this.os = liff.getOS()
-        if (liff.isLoggedIn()) {
-          liff
-            .getProfile()
-            .then(async (profile) => {
-              this.profile = profile
+    this.userIsAuthenicated = this.userService.getIsAuth();
 
-              this.theId = this.profile.userId
-              this.theEmail = liff.getDecodedIDToken()?.email
-              this.dashboardLink = 'dashboard'
+    if (this.userIsAuthenicated) {
+      this.router.navigate(['/dashboard']);
 
+    } else {
+      await liff
+        .init({ liffId: '1656955187-j6JWxVQG' })
+        .then(() => {
+          this.os = liff.getOS()
+          if (liff.isLoggedIn()) {
+            liff
+              .getProfile()
+              .then(async (profile) => {
+                this.profile = profile
 
-              await this.userService.login(this.theId, this.dashboardLink)
-              this.isLoading = true;
-
-            })
-            .catch(console.error)
-
-        } else {
-          // liff.login();
+                this.theId = this.profile.userId
+                this.theEmail = liff.getDecodedIDToken()?.email
+                this.dashboardLink = 'dashboard'
 
 
+                await this.userService.login(this.theId, this.dashboardLink)
+                this.isLoading = true;
 
-        }
-      })
-      .catch(console.error)
+              })
+              .catch(console.error)
+
+          } else {
+            // liff.login();
+
+
+
+          }
+        })
+        .catch(console.error)
+    }
+
+
 
   }
 
