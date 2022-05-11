@@ -27,6 +27,7 @@ export class AddUserComponent implements OnInit {
   @ViewChild('phoneError') phoneError: ElementRef | any
   @ViewChild('signupForm') signupForm: ElementRef | any
   @ViewChild('popupbtn') popupbtn: ElementRef | any
+  @ViewChild('popclick') popclick: ElementRef | any
 
   async main() {
     liff.ready.then(() => {
@@ -49,7 +50,7 @@ export class AddUserComponent implements OnInit {
     return profile.userId
   }
 
-  public saveUsername: boolean;
+  public saveUsername: boolean = false;
 
   public onSaveUsernameChanged(value: boolean) {
     this.saveUsername = value;
@@ -84,8 +85,8 @@ export class AddUserComponent implements OnInit {
     })
   }
 
-  async ngOnInit() {
 
+  async ngOnInit() {
 
     await liff
       .init({ liffId: '1656955187-j6JWxVQG' })
@@ -125,8 +126,13 @@ export class AddUserComponent implements OnInit {
             userConsent: ['']
           })
           this.isLoading = true;
+          this.popclick.nativeElement.click();
+
 
         }
+
+
+
       })
       .catch(console.error)
 
