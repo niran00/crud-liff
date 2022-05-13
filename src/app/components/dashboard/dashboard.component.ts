@@ -6,7 +6,7 @@ import { CrudService } from './../../service/crud.service';
 import { UserService } from './../../service/user.service';
 import { Subscription } from 'rxjs';
 
-type UnPromise<T> = T extends Promise<infer X>? X : T;
+type UnPromise<T> = T extends Promise<infer X> ? X : T;
 
 @Component({
   selector: 'app-dashboard',
@@ -16,11 +16,11 @@ type UnPromise<T> = T extends Promise<infer X>? X : T;
 
 export class DashboardComponent implements OnInit {
 
-    Users:any = [];
-   
-    userIsAuthenicated = false;
-    tokenUserId : string; 
-    private authStatusSub : Subscription;
+  Users: any = [];
+
+  userIsAuthenicated = false;
+  tokenUserId: string;
+  private authStatusSub: Subscription;
 
   constructor(
     private router: Router,
@@ -30,16 +30,16 @@ export class DashboardComponent implements OnInit {
   ) { }
 
 
-  @ViewChild('body') body: ElementRef | any  ;
-  @ViewChild('profile') profile: ElementRef | any  ;
-  @ViewChild('picutreUrl') picutreUrl: ElementRef | any  ;
-  @ViewChild('userId') userId: ElementRef | any  ;
-  @ViewChild('displayName') displayName: ElementRef | any  ;
-  @ViewChild('statusMessage') statusMessage: ElementRef | any  ;
-  @ViewChild('email') email: ElementRef | any  ;
-  
+  @ViewChild('body') body: ElementRef | any;
+  @ViewChild('profile') profile: ElementRef | any;
+  @ViewChild('picutreUrl') picutreUrl: ElementRef | any;
+  @ViewChild('userId') userId: ElementRef | any;
+  @ViewChild('displayName') displayName: ElementRef | any;
+  @ViewChild('statusMessage') statusMessage: ElementRef | any;
+  @ViewChild('email') email: ElementRef | any;
 
-  async  main() {
+
+  async main() {
     liff.ready.then(() => {
       if (liff.getOS() === 'android') {
         this.body.nativeElement.style.backgroundColor = '#888';
@@ -48,9 +48,9 @@ export class DashboardComponent implements OnInit {
         this.getUserProfile();
       }
     });
-    await liff.init({ liffId: '1656955187-j6JWxVQG' });
+    await liff.init({ liffId: '1657129933-glzmWkkP' });
   }
-  
+
   async getUserProfile() {
     const profile = await liff.getProfile();
     this.picutreUrl.nativeElement.src = profile.pictureUrl;
@@ -58,11 +58,11 @@ export class DashboardComponent implements OnInit {
     // this.displayName.nativeElement.innerHTML = '<b>ชื่อในไลน์: </b>' + profile.displayName;
     this.email.nativeElement.innerHTML = "<b>อีเมล : </b>" + liff.getDecodedIDToken()?.email;
   }
-  
-  
+
+
   ngOnInit(): void {
 
-     
+
     // this.crudService.GetBooks().subscribe(res => {
     //   console.log(res)
     //   this.Books =res;
@@ -72,24 +72,24 @@ export class DashboardComponent implements OnInit {
 
     this.userService.GetUsers().subscribe(res => {
       console.log(res)
-      this.Users =res;
-    });  
+      this.Users = res;
+    });
 
-    this.userIsAuthenicated = this.userService.getIsAuth(); 
+    this.userIsAuthenicated = this.userService.getIsAuth();
 
     this.authStatusSub = this.userService
-    .getAuthStatusListener()
-    .subscribe(isAuthenticated => {
-      this.userIsAuthenicated = isAuthenticated;
-      this.tokenUserId = this.userService.getTokenUserId();
-    });
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenicated = isAuthenticated;
+        this.tokenUserId = this.userService.getTokenUserId();
+      });
 
     this.main();
     this.getUserProfile();
-  }  
+  }
 
   ngOnDestroy(): void {
-    this.authStatusSub.unsubscribe(); 
+    this.authStatusSub.unsubscribe();
   }
-  
+
 }

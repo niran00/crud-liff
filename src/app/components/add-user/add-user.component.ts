@@ -37,7 +37,7 @@ export class AddUserComponent implements OnInit {
         this.getUserProfile()
       }
     })
-    await liff.init({ liffId: '1656955187-j6JWxVQG' })
+    await liff.init({ liffId: '1657129933-glzmWkkP' })
   }
 
   finalUserId: any = ''
@@ -89,7 +89,7 @@ export class AddUserComponent implements OnInit {
   async ngOnInit() {
 
     await liff
-      .init({ liffId: '1656955187-j6JWxVQG' })
+      .init({ liffId: '1657129933-glzmWkkP' })
       .then(() => {
         this.os = liff.getOS()
         if (liff.isLoggedIn()) {
@@ -119,7 +119,7 @@ export class AddUserComponent implements OnInit {
         } else {
           // liff.login();
           this.userForm = this.formBuilder.group({
-            userId: ['this.theId'],
+            userId: ['U4a20ad686ba7827c293b71dc77930331'],
             userEmail: ['this.theEmail'],
             userName: [''],
             userPhoneNumber: [''],

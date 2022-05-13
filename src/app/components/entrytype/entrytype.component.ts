@@ -33,7 +33,7 @@ export class EntrytypeComponent implements OnInit {
         this.getUserProfile()
       }
     })
-    await liff.init({ liffId: '1656955187-j6JWxVQG' })
+    await liff.init({ liffId: '1657129933-glzmWkkP' })
   }
 
   finalUserId: any = ''
@@ -57,7 +57,7 @@ export class EntrytypeComponent implements OnInit {
 
     if (this.userIsAuthenicated) {
       await liff
-        .init({ liffId: '1656955187-j6JWxVQG' })
+        .init({ liffId: '1657129933-glzmWkkP' })
         .then(() => {
           this.os = liff.getOS()
           if (liff.isLoggedIn()) {
@@ -74,7 +74,7 @@ export class EntrytypeComponent implements OnInit {
 
     } else {
       await liff
-        .init({ liffId: '1656955187-j6JWxVQG' })
+        .init({ liffId: '1657129933-glzmWkkP' })
         .then(() => {
           this.os = liff.getOS()
           if (liff.isLoggedIn()) {
