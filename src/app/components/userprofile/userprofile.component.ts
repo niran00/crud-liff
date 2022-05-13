@@ -69,7 +69,7 @@ export class UserprofileComponent implements AfterViewInit {
         this.getUserProfile();
       }
     });
-    await liff.init({ liffId: '1657129933-glzmWkkP' });
+    await liff.init({ liffId: '1656955187-j6JWxVQG' });
   }
 
   async getUserProfile() {
