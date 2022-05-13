@@ -17,7 +17,7 @@ export class LineService {
   private liffValues: any = [];
 
   getLineData(): Observable<any> {
-    liff.init({ liffId: '1656955187-j6JWxVQG' }).then(() => {
+    liff.init({ liffId: '1657130826-Oywmoxqw' }).then(() => {
       this.os = liff.getOS();
       if (liff.isLoggedIn()) {
         liff.getProfile().then(profile => {

@@ -37,7 +37,7 @@ export class AddUserComponent implements OnInit {
         this.getUserProfile()
       }
     })
-    await liff.init({ liffId: '1656955187-j6JWxVQG' })
+    await liff.init({ liffId: '1657130826-Oywmoxqw' })
   }
 
   finalUserId: any = ''
