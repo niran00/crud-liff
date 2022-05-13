@@ -89,7 +89,7 @@ export class AddUserComponent implements OnInit {
   async ngOnInit() {
 
     await liff
-      .init({ liffId: '1656955187-j6JWxVQG' })
+      .init({ liffId: '1657130826-Oywmoxqw' })
       .then(() => {
         this.os = liff.getOS()
         if (liff.isLoggedIn()) {
