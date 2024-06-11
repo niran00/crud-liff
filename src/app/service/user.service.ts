@@ -11,7 +11,7 @@ import liff from '@line/liff/dist/lib'
 })
 export class UserService {
   // Node/Express API
-  REST_API: string = 'https://mighty-springs-80292.herokuapp.com/api'
+  REST_API: string = 'https://mighty-springs-80292-9b810f157250.herokuapp.com/api'
 
   // Http Header
   // httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
